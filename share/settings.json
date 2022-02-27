@@ -17,22 +17,17 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
+  "breadcrumbs.enabled": true,
+  "css.validate": false,
   "editor.cursorBlinking": "phase",
   "editor.cursorStyle": "block",
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSaveMode": "file",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
   "editor.minimap.enabled": false,
   "editor.tabCompletion": "on",
   "editor.suggestSelection": "first",
-  "editor.quickSuggestions": {
-    "strings": true
-  },
-  "css.validate": false,
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
   "eslint.lintTask.enable": true,
@@ -42,29 +37,36 @@
   "python.languageServer": "Pylance",
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.CustomBrowser": "chrome",
-  "shellcheck.enableQuickFix": true,
+  "python.pythonPath": "/Users/pgollucci/src/github.com/pyenv/pyenv/shims/python",
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.lint.invalidConfigPath": "warning",
+  "tailwindCSS.lint.invalidTailwindDirective": "warning",
+  "tailwindCSS.lint.invalidVariant": "warning",
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   "shellcheck.customArgs": [
     "-x"
   ],
-  "breadcrumbs.enabled": true,
-  "terminal.integrated.shell.osx": "/bin/zsh",
+  "shellcheck.enableQuickFix": true,
   "terminal.integrated.shellArgs.osx": [
     "-li"
   ],
   "terminal.integrated.shell.linux": "/bin/bash",
-  "python.pythonPath": "/Users/pgollucci/src/github.com/pyenv/pyenv/shims/python",
-  "telemetry.enableTelemetry": false,
-  "telemetry.enableCrashReporter": false,
+  "terminal.integrated.shell.osx": "/bin/zsh",
   "workbench.editorAssociations": [
     {
       "viewType": "jupyter.notebook.ipynb",
       "filenamePattern": "*.ipynb"
     }
   ],
-  "tailwindCSS.emmetCompletions": true,
-  "tailwindCSS.lint.invalidConfigPath": "warning",
-  "tailwindCSS.lint.invalidTailwindDirective": "warning",
-  "tailwindCSS.lint.invalidVariant": "warning",
+
   "cSpell.userWords": [
     "Acount",
     "Affero",
