@@ -36,7 +36,6 @@ p6df::modules::vscode::vscodes() {
   code --install-extension alefragnani.Bookmarks
   code --install-extension bibhasdn.unique-lines
   code --install-extension christian-kohler.path-intellisense
-  code --install-extension CoenraadS.bracket-pair-colorizer-2
   code --install-extension lfs.vscode-emacs-friendly
   code --install-extension naumovs.color-highlight
   code --install-extension shardulm94.trailing-spaces
