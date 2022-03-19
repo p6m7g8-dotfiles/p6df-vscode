@@ -84,7 +84,7 @@ p6df::modules::vscode::external::brew() {
 p6df::modules::vscode::home::symlink() {
 
   ## fill in template
-  ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-vscode/share/settings.json $HOME/Library/Applications\ Support/Code/User/settings.json
+  ln -fs $P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-vscode/share/settings.json $HOME/Library/Applications\ Support/Code/User/settings.json
   ln -fs Library/Application\ Support/Code/User/globalStorage/.vscode .
 }
 
