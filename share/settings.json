@@ -43,17 +43,19 @@
   "python.pythonPath": "/Users/pgollucci/src/github.com/pyenv/pyenv/shims/python",
   "redhat.telemetry.enabled": false,
   "security.workspace.trust.untrustedFiles": "open",
-  "shellcheck.customArgs": ["-x"],
+  "shellcheck.customArgs": ["-x", "--severity=error"],
   "shellcheck.enableQuickFix": true,
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.lint.invalidConfigPath": "warning",
   "tailwindCSS.lint.invalidTailwindDirective": "warning",
   "tailwindCSS.lint.invalidVariant": "warning",
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-  "terminal.integrated.shell.linux": "/bin/bash",
-  "terminal.integrated.shell.osx": "/bin/zsh",
-  "terminal.integrated.shellArgs.osx": ["-li"],
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "block",
+  "terminal.integrated.environmentChangesIndicator": "warnonly",
+  "terminal.integrated.scrollback": 100000,
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.shellIntegration.history": 10000,
   "workbench.startupEditor": "none",
 
   "json.schemas": [],
@@ -575,5 +577,6 @@
     "Yusubov",
     "zero'th",
     "ztna"
-  ]
+  ],
+  "codeQL.telemetry.enableTelemetry": false
 }
