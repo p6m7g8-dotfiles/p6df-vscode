@@ -19,7 +19,9 @@
   },
   "bracketPairColorizer.depreciation-notice": false,
   "breadcrumbs.enabled": true,
+  "codeQL.telemetry.enableTelemetry": false,
   "css.validate": false,
+  "editor.acceptSuggestionOnEnter": "on",
   "editor.cursorBlinking": "phase",
   "editor.cursorStyle": "block",
   "editor.formatOnPaste": true,
@@ -27,7 +29,10 @@
   "editor.formatOnSaveMode": "file",
   "editor.formatOnType": true,
   "editor.minimap.enabled": false,
+  "editor.snippetSuggestions": "top"
   "editor.suggestSelection": "first",
+  "editor.suggest.preview": true,
+  "editor.suggest.showMethods": true,
   "editor.tabCompletion": "on",
   "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
@@ -35,7 +40,6 @@
   "eslint.packageManager": "yarn",
   "eslint.run": "onType",
   "go.toolsManagement.autoUpdate": true,
-  "go.useLanguageServer": true,
   "kite.showWelcomeNotificationOnStartup": false,
   "liveServer.settings.CustomBrowser": "chrome",
   "liveServer.settings.donotShowInfoMsg": true,
@@ -54,9 +58,14 @@
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.environmentChangesIndicator": "warnonly",
   "terminal.integrated.scrollback": 100000,
-  "terminal.integrated.shellIntegration.enabled": true,
   "terminal.integrated.shellIntegration.history": 10000,
   "workbench.startupEditor": "none",
+
+  "sonarlint.rules": {
+    "typescript:S1848": {
+      "level": "off"
+    }
+  },
 
   "json.schemas": [],
 
@@ -593,5 +602,4 @@
     "zero'th",
     "ztna"
   ],
-  "codeQL.telemetry.enableTelemetry": false
 }
