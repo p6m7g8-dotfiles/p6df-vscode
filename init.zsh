@@ -9,6 +9,7 @@
 ######################################################################
 p6df::modules::vscode::deps() {
   ModuleDeps=(
+    p6m7g8-dotfiles/p6df-shell
   )
 }
 
