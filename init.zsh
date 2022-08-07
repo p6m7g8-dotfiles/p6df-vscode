@@ -47,17 +47,24 @@ p6df::modules::vscode::vscodes() {
   code --install-extension wmaurer.change-case
 
   # community/publishing
-  code --install-extension sneezry.vscode-devto
   code --install-extension ms-vsliveshare.vsliveshare
   code --install-extension ms-vsliveshare.vsliveshare-pack
   code --install-extension ritwickdey.LiveServer
+  code --install-extension sneezry.vscode-devto
 
   # misc
   code --install-extension arcanis.vscode-zipfs
   code --install-extension esbenp.prettier-vscode
   code --install-extension hbenl.vscode-test-explorer
+  code --install-extension jebbs.plantuml
   code --install-extension thundra.thundra-debugger
+  code --install-extension Tyriar.lorem-ipsu
+  code --install-extension VisualStudioExptTeam.intellicode-api-usage-examples
   code --install-extension Wscats.cors-browser
+  code --install-extensionms-vscode.test-adapter-converter
+  code --install-extensionms-vsliveshare.vsliveshare-audio
+  code --install-extensionredhat.vscode-commons
+  code --install-extensionryu1kn.partial-diff
 }
 
 ######################################################################
