@@ -1,5 +1,4 @@
-# shellcheck shell=zsh
-
+# shellcheck shell=bash
 ######################################################################
 #<
 #
@@ -20,7 +19,6 @@ p6df::modules::vscode::deps() {
 #
 #>
 ######################################################################
-
 p6df::modules::vscode::vscodes() {
 
   # md
@@ -65,6 +63,8 @@ p6df::modules::vscode::vscodes() {
   code --install-extensionms-vsliveshare.vsliveshare-audio
   code --install-extensionredhat.vscode-commons
   code --install-extensionryu1kn.partial-diff
+
+  p6_return_void
 }
 
 ######################################################################
@@ -79,6 +79,8 @@ p6df::modules::vscode::external::brew() {
   brew install --cask visual-studio
   brew install --cask visual-studio-code
   brew install --cask visual-studio-code-insiders
+
+  p6_return_void
 }
 
 ######################################################################
@@ -86,14 +88,16 @@ p6df::modules::vscode::external::brew() {
 #
 # Function: p6df::modules::vscode::home::symlink()
 #
-#  Environment:	 P6_DFZ_SRC_P6M7G8_DIR
+#  Environment:	 P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::vscode::home::symlink() {
 
   ## fill in template
-  ln -fs $P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-vscode/share/settings.json $HOME/Library/Applications\ Support/Code/User/settings.json
-  ln -fs Library/Application\ Support/Code/User/globalStorage/.vscode .
+  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-vscode/share/settings.json" "$HOME/Library/Applications\ Support/Code/User/settings.json"
+  p6_file_symlink "Library/Application\ Support/Code/User/globalStorage/.vscode" "."
+
+  p6_return_void
 }
 
 ######################################################################
@@ -106,6 +110,8 @@ p6df::modules::vscode::home::symlink() {
 p6df::modules::vscode::init() {
 
   p6df::modules::vscode::aliases::init
+
+  p6_return_void
 }
 
 ######################################################################
@@ -113,13 +119,14 @@ p6df::modules::vscode::init() {
 #
 # Function: p6df::modules::vscode::aliases::init()
 #
-#  Depends:	 p6_ca p6_cn
 #>
 ######################################################################
 p6df::modules::vscode::aliases::init() {
 
   alias p6_ca="p6_vscode_tmux_add"
   alias p6_cn="p6_vscode_new"
+
+  p6_return_void
 }
 
 ######################################################################
@@ -129,12 +136,11 @@ p6df::modules::vscode::aliases::init() {
 #
 #  Args:
 #	cmd -
-#	... -
+#	... - 
 #
 #  Returns:
 #	code - rc
 #
-#  Depends:	 p6_run
 #>
 ######################################################################
 p6_vscode_cmd() {
