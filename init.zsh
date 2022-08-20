@@ -103,20 +103,6 @@ p6df::modules::vscode::home::symlink() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::init()
-#
-#>
-######################################################################
-p6df::modules::vscode::init() {
-
-  p6df::modules::vscode::aliases::init
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
 # Function: p6df::modules::vscode::aliases::init()
 #
 #>
