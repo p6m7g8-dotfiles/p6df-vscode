@@ -17,7 +17,20 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "bracketPairColorizer.depreciation-notice": false,
+  "[rust]": {
+    "editor.formatOnSave": true
+  },
+  "rust-analyzer.check.overrideCommand": [
+    "cargo",
+    "clippy",
+    "--fix",
+    "--workspace",
+    "--message-format=json",
+    "--all-targets",
+    "--allow-dirty",
+    "--allow-staged"
+  ],
+  "editor.bracketPairColorization.enabled": true,
   "breadcrumbs.enabled": true,
   "codeQL.telemetry.enableTelemetry": false,
   "css.validate": false,

@@ -60,7 +60,6 @@ p6df::modules::vscode::vscodes() {
   code --install-extension VisualStudioExptTeam.intellicode-api-usage-examples
   code --install-extension Wscats.cors-browser
   code --install-extensionms-vscode.test-adapter-converter
-  code --install-extensionms-vsliveshare.vsliveshare-audio
   code --install-extensionredhat.vscode-commons
   code --install-extensionryu1kn.partial-diff
 
