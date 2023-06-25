@@ -55,14 +55,14 @@ p6df::modules::vscode::vscodes() {
   code --install-extension esbenp.prettier-vscode
   code --install-extension hbenl.vscode-test-explorer
   code --install-extension jebbs.plantuml
-  code --install-extension thundra.thundra-debugger
-  code --install-extension Tyriar.lorem-ipsu
   code --install-extension VisualStudioExptTeam.intellicode-api-usage-examples
   code --install-extension Wscats.cors-browser
-  code --install-extensionms-vscode.test-adapter-converter
-  code --install-extensionredhat.vscode-commons
-  code --install-extensionryu1kn.partial-diff
+  code --install-extension ms-vscode.test-adapter-converter
+  code --install-extension redhat.vscode-commons
+  code --install-extension ryu1kn.partial-diff
 
+#  code --install-extension thundra.thundra-debugger
+#  code --install-extension Tyriar.lorem-ipsu
   p6_return_void
 }
 
