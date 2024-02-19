@@ -61,8 +61,8 @@ p6df::modules::vscode::vscodes() {
   code --install-extension redhat.vscode-commons
   code --install-extension ryu1kn.partial-diff
 
-#  code --install-extension thundra.thundra-debugger
-#  code --install-extension Tyriar.lorem-ipsu
+  #  code --install-extension thundra.thundra-debugger
+  #  code --install-extension Tyriar.lorem-ipsu
   p6_return_void
 }
 
@@ -93,7 +93,7 @@ p6df::modules::vscode::external::brew() {
 p6df::modules::vscode::home::symlink() {
 
   ## fill in template
-  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-vscode/share/settings.json" "$HOME/Library/Applications\ Support/Code/User/settings.json"
+  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-vscode/share/settings.json" "$HOME/Library/Application\ Support/Code/User/settings.json"
   p6_file_symlink "Library/Application\ Support/Code/User/globalStorage/.vscode" "."
 
   p6_return_void
@@ -121,7 +121,7 @@ p6df::modules::vscode::aliases::init() {
 #
 #  Args:
 #	cmd -
-#	... - 
+#	... -
 #
 #  Returns:
 #	code - rc
