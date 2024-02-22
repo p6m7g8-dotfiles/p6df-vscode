@@ -44,11 +44,6 @@
 
 #### p6df-vscode/init.zsh:
 
-- code rc = p6_vscode_cmd(cmd, ...)
-- p6_vscode_add([dir=.])
-- p6_vscode_new([dir=.])
-- p6_vscode_tmux_add()
-- p6df::modules::vscode::aliases::init()
 - p6df::modules::vscode::deps()
 - p6df::modules::vscode::external::brew()
 - p6df::modules::vscode::home::symlink()
