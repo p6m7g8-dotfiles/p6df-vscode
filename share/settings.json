@@ -37,6 +37,12 @@
   "breadcrumbs.enabled": true,
   "codeQL.telemetry.enableTelemetry": false,
   "css.validate": false,
+  "cucumberautocomplete.onTypeFormat": false,
+  "cucumberautocomplete.steps": ["steps/*.ts"],
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "cucumberautocomplete.strictGherkinValidation": true,
+  "cucumberautocomplete.syncfeatures": "features/*.feature",
+  "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
   "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "phase",
   "editor.cursorStyle": "block",
@@ -78,9 +84,13 @@
   "go.useLanguageServer": true,
   "go.vetOnSave": "workspace",
   "isort.args": ["--profile", "black"],
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "json.schemas": [],
   "liveServer.settings.CustomBrowser": "chrome",
   "liveServer.settings.donotShowInfoMsg": true,
+  "playwright.env": {
+    "DEBUG": "pw:api"
+  },
   "mypy-type-checker.importStrategy": "fromEnvironment",
   "pylint.importStrategy": "fromEnvironment",
   "python.analysis.autoSearchPaths": true,
@@ -455,6 +465,5 @@
     "zeroconf",
     "zeshuaro",
     "zxvf"
-  ],
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  ]
 }
