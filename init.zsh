@@ -45,8 +45,7 @@ p6df::modules::vscode::vscodes() {
   code --install-extension wmaurer.change-case
 
   # community/publishing
-  code --install-extension ms-vsliveshare.vsliveshare
-  code --install-extension ms-vsliveshare.vsliveshare-pack
+  code --install-extension MS-vsliveshare.vsliveshare
   code --install-extension ritwickdey.LiveServer
   code --install-extension sneezry.vscode-devto
 
