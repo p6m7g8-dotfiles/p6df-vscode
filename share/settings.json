@@ -137,7 +137,7 @@
   "tailwindCSS.lint.invalidConfigPath": "warning",
   "tailwindCSS.lint.invalidTailwindDirective": "warning",
   "tailwindCSS.lint.invalidVariant": "warning",
-  "terminal.integrated.defaultProfile.osx": "tmux",
+  // "terminal.integrated.defaultProfile.osx": "tmux",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "block",
