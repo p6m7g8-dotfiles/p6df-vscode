@@ -74,9 +74,9 @@ p6df::modules::vscode::vscodes() {
 ######################################################################
 p6df::modules::vscode::external::brew() {
 
-  brew install --cask visual-studio
-  brew install --cask visual-studio-code
-  brew install --cask visual-studio-code-insiders
+  p6df::modules::homebrew::cli::brew::install --cask visual-studio
+  p6df::modules::homebrew::cli::brew::install --cask visual-studio-code
+  p6df::modules::homebrew::cli::brew::install --cask visual-studio-code-insiders
 
   p6_return_void
 }
