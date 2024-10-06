@@ -8,6 +8,9 @@
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
   "[perl]": {
     "editor.defaultFormatter": "sfodje.perltidy"
   },
@@ -30,9 +33,6 @@
     "editor.defaultFormatter": "Shopify.ruby-lsp"
   },
   "aws.telemetry": false,
-  "aws.suppressPrompts": {
-    "codeWhispererNewWelcomeMessage": true
-  },
   "black-formatter.importStrategy": "fromEnvironment",
   "breadcrumbs.enabled": true,
   "codeQL.telemetry.enableTelemetry": false,
@@ -60,23 +60,11 @@
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "on",
   "editor.acceptSuggestionOnEnter": "on",
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll": "explicit",
-    "source.addMissingImports": "explicit",
-    "source.removeUnusedImports": "explicit",
-    "source.sortImports": "explicit",
-    "source.cleanImports": "explicit",
-    "go.generateTests": "explicit",
-    "go.test": "explicit",
-    "go.build": "explicit",
-    "go.vet": "explicit"
-  },
   "editor.renderWhitespace": "boundary",
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "eslint.run": "onType",
-  "eslint.experimental.useFlatConfig": true,
+  //  "eslint.useFlatConfig": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -88,6 +76,18 @@
     "yaml",
     "toml"
   ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
+    "source.fixAll": "always",
+    "source.addMissingImports": "always",
+    "source.removeUnusedImports": "always",
+    "source.sortImports": "always",
+    "source.cleanImports": "always",
+    "go.generateTests": "always",
+    "go.test": "always",
+    "go.build": "always",
+    "go.vet": "always"
+  },
   "flake8.importStrategy": "fromEnvironment",
   "git.openRepositoryInParentFolders": "never",
   "go.formatTool": "goimports",
@@ -137,6 +137,7 @@
   "tailwindCSS.lint.invalidConfigPath": "warning",
   "tailwindCSS.lint.invalidTailwindDirective": "warning",
   "tailwindCSS.lint.invalidVariant": "warning",
+  "telemetry.telemetryLevel": "off",
   // "terminal.integrated.defaultProfile.osx": "tmux",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
@@ -176,7 +177,9 @@
   "remote.SSH.remotePlatform": {
     "*.gitpod.io": "linux"
   },
-  "amazonQ.telemetry": false,
+  "sonarlint.pathToNodeExecutable": "node",
+  "githubPullRequests.pullBranch": "never",
+  "gitlens.graph.layout": "editor",
   "yaml.customTags": [
     "!And",
     "!And sequence",
