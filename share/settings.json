@@ -16,7 +16,7 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  },
   "[perl]": {
     "editor.defaultFormatter": "sfodje.perltidy"
   },
@@ -83,7 +83,7 @@
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.organizeImports": "never",
     "go.generateTests": "always",
     "go.test": "always",
     "go.build": "always",
@@ -162,7 +162,7 @@
   "typescript.suggest.autoImports": true,
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.referencesCodeLens.enabled": true,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "workbench.colorTheme": "Default Dark+",
   "workbench.startupEditor": "none",
   "rust-analyzer.check.overrideCommand": [
