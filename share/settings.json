@@ -38,6 +38,14 @@
   "[ruby]": {
     "editor.defaultFormatter": "Shopify.ruby-lsp"
   },
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/opt/homebrew/bin/zsh",
+      "args": [
+        "-l"
+      ]
+    },
+  },
   "aws.telemetry": false,
   "black-formatter.importStrategy": "fromEnvironment",
   "breadcrumbs.enabled": true,
@@ -92,11 +100,6 @@
   "files.associations": {
     "*.test.tsx": "typescriptreact",
     "*.test.ts": "typescript"
-  },
-  "files.exclude": {
-    "node_modules": true,
-    "dist": true,
-    ".cache": true
   },
   "flake8.importStrategy": "fromEnvironment",
   "git.openRepositoryInParentFolders": "never",
@@ -282,6 +285,7 @@
     "bradgashler",
     "brentrowswell",
     "brigu",
+    "Brotli",
     "btnpreview",
     "btns",
     "BUILDKIT",
@@ -486,6 +490,7 @@
     "prequal",
     "prequalification",
     "prerequest",
+    "presign",
     "previewlanguage",
     "pricematch",
     "printenv",
@@ -523,6 +528,7 @@
     "rowsres",
     "rubinlagura",
     "rubocop",
+    "samcli",
     "SANDBOXAWARDS",
     "Sched",
     "scipy",
@@ -584,6 +590,7 @@
     "TOOD",
     "traitlets",
     "Transcations",
+    "TURBOPACK",
     "UNAWARDED",
     "unpublish",
     "unsubmitted",
