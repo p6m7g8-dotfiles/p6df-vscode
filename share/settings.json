@@ -33,7 +33,8 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "[rust]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "[ruby]": {
     "editor.defaultFormatter": "Shopify.ruby-lsp"
@@ -177,6 +178,7 @@
     "--allow-dirty",
     "--allow-staged"
   ],
+  "rust-analyzer.procMacro.enable": true,
   "sonarlint.rules": {
     "typescript:S1848": {
       "level": "off"
@@ -619,5 +621,6 @@
     "zeroconf",
     "zeshuaro",
     "zxvf"
-  ]
+  ],
+  "sonarlint.focusOnNewCode": false
 }
