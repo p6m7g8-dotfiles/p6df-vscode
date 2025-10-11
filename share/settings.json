@@ -26,6 +26,20 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
   "[go]": {
     "editor.defaultFormatter": "golang.go"
   },
@@ -621,6 +635,5 @@
     "zeroconf",
     "zeshuaro",
     "zxvf"
-  ],
-  "sonarlint.focusOnNewCode": false
+  ]
 }
