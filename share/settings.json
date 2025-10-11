@@ -26,6 +26,20 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
   "[go]": {
     "editor.defaultFormatter": "golang.go"
   },
@@ -33,7 +47,8 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "[rust]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "[ruby]": {
     "editor.defaultFormatter": "Shopify.ruby-lsp"
@@ -177,6 +192,7 @@
     "--allow-dirty",
     "--allow-staged"
   ],
+  "rust-analyzer.procMacro.enable": true,
   "sonarlint.rules": {
     "typescript:S1848": {
       "level": "off"
@@ -619,19 +635,5 @@
     "zeroconf",
     "zeshuaro",
     "zxvf"
-  ],
-  "[dockercompose]": {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.autoIndent": "advanced",
-    "editor.quickSuggestions": {
-      "other": true,
-      "comments": false,
-      "strings": true
-    },
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "[github-actions-workflow]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
+  ]
 }
