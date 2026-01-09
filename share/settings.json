@@ -21,7 +21,7 @@
     "editor.defaultFormatter": "sfodje.perltidy"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
@@ -44,35 +44,47 @@
     "editor.defaultFormatter": "golang.go"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
   },
   "[rust]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true
   },
   "[ruby]": {
-    "editor.defaultFormatter": "Shopify.ruby-lsp"
+    "editor.defaultFormatter": "shopify.ruby-lsp"
   },
+
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
+  },
+  "[hcl]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
+  },
+
   "terminal.integrated.profiles.osx": {
     "zsh": {
       "path": "/opt/homebrew/bin/zsh",
-      "args": [
-        "-l"
-      ]
-    },
+      "args": ["-l"]
+    }
   },
+
   "aws.telemetry": false,
-  "black-formatter.importStrategy": "fromEnvironment",
   "breadcrumbs.enabled": true,
   "css.validate": false,
-  "cucumberautocomplete.onTypeFormat": false,
-  "cucumberautocomplete.steps": [
-    "steps/*.ts"
-  ],
-  "cucumberautocomplete.strictGherkinCompletion": true,
-  "cucumberautocomplete.strictGherkinValidation": true,
-  "cucumberautocomplete.syncfeatures": "features/*.feature",
-  "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
+
+  "black-formatter.importStrategy": "fromEnvironment",
+  "flake8.importStrategy": "fromEnvironment",
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "isort.args": ["--profile", "black"],
+  "flake8.args": ["--max-line-length=120"],
+
   "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "phase",
   "editor.cursorStyle": "block",
@@ -89,9 +101,19 @@
   "editor.tabCompletion": "on",
   "editor.acceptSuggestionOnEnter": "on",
   "editor.renderWhitespace": "boundary",
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never",
+    "go.generateTests": "always",
+    "go.test": "always",
+    "go.build": "always",
+    "go.vet": "always"
+  },
+
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
-  "eslint.run": "onType",
+  "eslint.run": "onSave",
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -103,20 +125,9 @@
     "yaml",
     "xml"
   ],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never",
-    "go.generateTests": "always",
-    "go.test": "always",
-    "go.build": "always",
-    "go.vet": "always"
-  },
-  "files.associations": {
-    "*.test.tsx": "typescriptreact",
-    "*.test.ts": "typescript"
-  },
-  "flake8.importStrategy": "fromEnvironment",
+
   "git.openRepositoryInParentFolders": "never",
+
   "go.formatTool": "goimports",
   "go.installDependenciesWhenBuilding": false,
   "go.lintOnSave": "workspace",
@@ -124,64 +135,68 @@
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
   "go.vetOnSave": "workspace",
-  "isort.args": [
-    "--profile",
-    "black"
-  ],
+
   "javascript.updateImportsOnFileMove.enabled": "always",
   "jest.runMode": "on-demand",
-  "json.schemas": [],
+
   "liveServer.settings.CustomBrowser": "chrome",
   "liveServer.settings.donotShowInfoMsg": true,
+
   "playwright.env": {
     "DEBUG": "pw:api"
   },
-  "mypy-type-checker.importStrategy": "fromEnvironment",
-  "prettier.enable": false,
-  "pylint.importStrategy": "fromEnvironment",
+
   "python.analysis.autoSearchPaths": true,
   "python.analysis.typeCheckingMode": "basic",
-  "flake8.args": [
-    "--max-line-length=120"
-  ],
   "python.languageServer": "Pylance",
+  "python.formatting.provider": "none",
   "python.terminal.activateEnvironment": true,
   "python.terminal.executeInFileDir": true,
-  "python.terminal.launchArgs": [
-    "--none"
-  ],
+  "python.terminal.launchArgs": ["--none"],
   "python.testing.pytestEnabled": true,
+
   "redhat.telemetry.enabled": false,
-  "remote.SSH.defaultExtensions": [
-    "gitpod.gitpod-remote-ssh"
-  ],
+
   "security.workspace.trust.untrustedFiles": "open",
-  "shellcheck.customArgs": [
-    "-x",
-    "--severity=error"
-  ],
+
+  "shellcheck.customArgs": ["-x", "--severity=error"],
   "shellcheck.enableQuickFix": true,
+
   "snowflake.connectionsConfigFile": "/Users/pgollucci/.snowflake/connections.toml",
+
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.lint.invalidConfigPath": "warning",
   "tailwindCSS.lint.invalidTailwindDirective": "warning",
   "tailwindCSS.lint.invalidVariant": "warning",
+
   "telemetry.telemetryLevel": "off",
-  // "terminal.integrated.defaultProfile.osx": "tmux",
+
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.environmentChangesIndicator": "warnonly",
   "terminal.integrated.scrollback": 100000,
   "terminal.integrated.shellIntegration.history": 10000,
+
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.format.enable": false,
   "typescript.suggest.autoImports": true,
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
+
   "workbench.colorTheme": "Default Dark+",
   "workbench.startupEditor": "none",
+
+  "clangd.path": "clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--clang-tidy",
+    "--completion-style=detailed",
+    "--header-insertion=iwyu",
+    "--pch-storage=memory"
+  ],
+
   "rust-analyzer.check.overrideCommand": [
     "cargo",
     "clippy",
@@ -193,29 +208,38 @@
     "--allow-staged"
   ],
   "rust-analyzer.procMacro.enable": true,
+
   "sonarlint.rules": {
-    "typescript:S1848": {
-      "level": "off"
-    },
-    "python:S1192": {
-      "level": "off"
-    },
-    "python:S3776": {
-      "level": "off"
-    }
+    "typescript:S1848": { "level": "off" },
+    "python:S1192": { "level": "off" },
+    "python:S3776": { "level": "off" }
   },
+
   "editor.quickSuggestions": {
     "strings": true
   },
+
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
+
   "remote.SSH.remotePlatform": {
     "*.gitpod.io": "linux"
   },
+
   "sonarlint.pathToNodeExecutable": "node",
   "githubPullRequests.pullBranch": "never",
   "gitlens.graph.layout": "editor",
+
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.excludeBySource": ["cSpell"],
+
+  "terraform.languageServer": {
+    "external": true,
+    "path": "tofu"
+  },
+  "terraform.validateOnSave": true,
+
   "yaml.customTags": [
     "!And",
     "!And sequence",
