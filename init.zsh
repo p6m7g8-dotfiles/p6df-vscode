@@ -33,7 +33,6 @@ p6df::modules::vscode::vscodes() {
   # ui
   code --install-extension aaron-bond.better-comments
   code --install-extension alefragnani.Bookmarks
-  code --install-extension bibhasdn.unique-lines
   code --install-extension christian-kohler.path-intellisense
   code --install-extension lfs.vscode-emacs-friendly
   code --install-extension naumovs.color-highlight
@@ -41,7 +40,6 @@ p6df::modules::vscode::vscodes() {
   code --install-extension streetsidesoftware.code-spell-checker
   code --install-extension v4run.transpose
   code --install-extension VisualStudioExptTeam.vscodeintellicode
-  code --install-extension wayou.vscode-todo-highlight
   code --install-extension wmaurer.change-case
 
   # community/publishing
@@ -55,7 +53,6 @@ p6df::modules::vscode::vscodes() {
   code --install-extension hbenl.vscode-test-explorer
   code --install-extension jebbs.plantuml
   code --install-extension VisualStudioExptTeam.intellicode-api-usage-examples
-  code --install-extension Wscats.cors-browser
   code --install-extension ms-vscode.test-adapter-converter
   code --install-extension redhat.vscode-commons
   code --install-extension ryu1kn.partial-diff
