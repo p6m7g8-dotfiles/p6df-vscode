@@ -93,3 +93,45 @@ p6df::modules::vscode::home::symlink() {
 
   p6_return_void
 }
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::aliases::init()
+#
+#>
+######################################################################
+p6df::modules::vscode::aliases::init() {
+
+  p6_alias_create "p6_code" "p6df::modules::vscode::p6code"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: code ? = p6df::modules::vscode::p6code(...)
+#
+#  Args:
+#	... - 
+#
+#  Returns:
+#	code - ?
+#
+#  Environment:	 HOME
+#>
+######################################################################
+p6df::modules::vscode::p6code() {
+  shift 0
+
+  local base="${HOME}/.vscode-sandboxes/${P6_VSCODE_PROFILE}"
+  local user_data="${base}/user-data"
+  local extensions="${base}/extensions"
+
+  mkdir -p "${user_data}/User" "${extensions}"
+
+  code --user-data-dir="${user_data}" --extensions-dir="${extensions}" "$@"
+
+  p6_return_code_as_code "$?"
+}

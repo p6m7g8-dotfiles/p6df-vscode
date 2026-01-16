@@ -26,6 +26,8 @@
 
 ### p6df-vscode/init.zsh
 
+- code ? = p6df::modules::vscode::p6code(...)
+- p6df::modules::vscode::aliases::init()
 - p6df::modules::vscode::deps()
 - p6df::modules::vscode::external::brew()
 - p6df::modules::vscode::home::symlink()
