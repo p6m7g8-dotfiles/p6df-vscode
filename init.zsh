@@ -103,7 +103,7 @@ p6df::modules::vscode::home::symlink() {
 ######################################################################
 p6df::modules::vscode::aliases::init() {
 
-  p6_alias_create "p6_code" "p6df::modules::vscode::p6code"
+  p6_alias "p6_code" "p6df::modules::vscode::p6code"
 
   p6_return_void
 }
