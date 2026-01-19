@@ -82,7 +82,7 @@ p6df::modules::vscode::external::brew() {
 #
 # Function: p6df::modules::vscode::home::symlink()
 #
-#  Environment:	 P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
+#  Environment:	 HOME P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::vscode::home::symlink() {
@@ -119,7 +119,7 @@ p6df::modules::vscode::aliases::init() {
 #  Returns:
 #	code - ?
 #
-#  Environment:	 HOME
+#  Environment:	 HOME P6_VSCODE_PROFILE
 #>
 ######################################################################
 p6df::modules::vscode::p6code() {
