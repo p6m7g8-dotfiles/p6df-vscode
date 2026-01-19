@@ -21,6 +21,7 @@
 ### Aliases
 
 - p6_code IS p6df::modules::vscode::p6code
+
 ### Functions
 
 ## p6df-vscode
