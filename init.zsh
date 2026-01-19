@@ -135,3 +135,24 @@ p6df::modules::vscode::p6code() {
 
   p6_return_code_as_code "$?"
 }
+
+######################################################################
+#<
+#
+# Function: str str = p6df::modules::vscode::prompt::mod()
+#
+#  Returns:
+#	str - str
+#
+#  Environment:	 P6_DFZ_PROFILE_VSCODE
+#>
+######################################################################
+p6df::modules::vscode::prompt::mod() {
+
+  local str
+  if ! p6_string_blank "$P6_DFZ_PROFILE_VSCODE"; then
+    str="vscode:\t\t  $P6_DFZ_PROFILE_VSCODE:"
+  fi
+
+  p6_return_str "$str"
+}

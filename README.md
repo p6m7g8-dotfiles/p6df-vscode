@@ -20,6 +20,7 @@
 
 ### Aliases
 
+- p6_code IS p6df::modules::vscode::p6code
 ### Functions
 
 ## p6df-vscode
@@ -32,6 +33,7 @@
 - p6df::modules::vscode::external::brew()
 - p6df::modules::vscode::home::symlink()
 - p6df::modules::vscode::vscodes()
+- str str = p6df::modules::vscode::prompt::mod()
 
 ## Hierarchy
 
