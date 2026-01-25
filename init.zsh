@@ -71,8 +71,8 @@ p6df::modules::vscode::vscodes() {
 ######################################################################
 p6df::modules::vscode::external::brew() {
 
-  p6df::modules::homebrew::cli::brew::install --cask visual-studio-code
-#  p6df::modules::homebrew::cli::brew::install --cask visual-studio-code@insiders
+  p6df::core::homebrew::cli::brew::install --cask visual-studio-code
+#  p6df::core::homebrew::cli::brew::install --cask visual-studio-code@insiders
 
   p6_return_void
 }
@@ -111,13 +111,10 @@ p6df::modules::vscode::aliases::init() {
 ######################################################################
 #<
 #
-# Function: code ? = p6df::modules::vscode::p6code(...)
+# Function: p6df::modules::vscode::p6code(...)
 #
 #  Args:
 #	... - 
-#
-#  Returns:
-#	code - ?
 #
 #  Environment:	 HOME P6_VSCODE_PROFILE
 #>
@@ -155,4 +152,38 @@ p6df::modules::vscode::prompt::mod() {
   fi
 
   p6_return_str "$str"
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::profile::on(profile)
+#
+#  Args:
+#	profile -
+#
+#  Environment:	 P6_DFZ_PROFILE_VSCODE
+#>
+######################################################################
+p6df::modules::vscode::profile::on() {
+  local profile="$1"
+
+  p6_env_export "P6_DFZ_PROFILE_VSCODE" "$profile"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::profile::off()
+#
+#  Environment:	 P6_DFZ_PROFILE_VSCODE
+#>
+######################################################################
+p6df::modules::vscode::profile::off() {
+
+  p6_env_export_un P6_DFZ_PROFILE_VSCODE
+
+  p6_return_void
 }
