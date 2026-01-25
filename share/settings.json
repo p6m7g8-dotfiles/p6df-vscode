@@ -271,5 +271,9 @@
   ],
   "cSpell.userWords": [
     "awscdk"
-  ]
+  ],
+  "claudeCode.preferredLocation": "sidebar",
+  "http.systemCertificatesNode": true,
+  "geminicodeassist.project": "p6m7g8",
+  "githubPullRequests.codingAgent.codeLens": false
 }
