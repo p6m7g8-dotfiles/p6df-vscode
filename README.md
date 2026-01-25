@@ -40,11 +40,13 @@ TODO: Add a short summary of this module.
 
 ##### p6df-vscode/init.zsh
 
-- `code ? = p6df::modules::vscode::p6code(...)`
 - `p6df::modules::vscode::aliases::init()`
 - `p6df::modules::vscode::deps()`
 - `p6df::modules::vscode::external::brew()`
 - `p6df::modules::vscode::home::symlink()`
+- `p6df::modules::vscode::p6code(...)`
+- `p6df::modules::vscode::profile::off()`
+- `p6df::modules::vscode::profile::on(profile)`
 - `p6df::modules::vscode::vscodes()`
 - `str str = p6df::modules::vscode::prompt::mod()`
 
