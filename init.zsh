@@ -22,43 +22,118 @@ p6df::modules::vscode::deps() {
 p6df::modules::vscode::vscodes() {
 
   # md
-  code --install-extension bierner.markdown-preview-github-styles
-  code --install-extension shd101wyy.markdown-preview-enhanced
-  code --install-extension yzane.markdown-pdf
-  code --install-extension yzhang.markdown-all-in-one
+  p6df::modules::vscode::extension::install bierner.markdown-preview-github-styles
+  p6df::modules::vscode::extension::install shd101wyy.markdown-preview-enhanced
+  p6df::modules::vscode::extension::install yzane.markdown-pdf
+  p6df::modules::vscode::extension::install yzhang.markdown-all-in-one
 
   # yaml
-  code --install-extension redhat.vscode-yaml
+  p6df::modules::vscode::extension::install redhat.vscode-yaml
 
   # ui
-  code --install-extension aaron-bond.better-comments
-  code --install-extension alefragnani.Bookmarks
-  code --install-extension christian-kohler.path-intellisense
-  code --install-extension lfs.vscode-emacs-friendly
-  code --install-extension naumovs.color-highlight
-  code --install-extension shardulm94.trailing-spaces
-  code --install-extension streetsidesoftware.code-spell-checker
-  code --install-extension v4run.transpose
-  code --install-extension VisualStudioExptTeam.vscodeintellicode
-  code --install-extension wmaurer.change-case
+  p6df::modules::vscode::extension::install aaron-bond.better-comments
+  p6df::modules::vscode::extension::install alefragnani.Bookmarks
+  p6df::modules::vscode::extension::install christian-kohler.path-intellisense
+  p6df::modules::vscode::extension::install lfs.vscode-emacs-friendly
+  p6df::modules::vscode::extension::install naumovs.color-highlight
+  p6df::modules::vscode::extension::install shardulm94.trailing-spaces
+  p6df::modules::vscode::extension::install streetsidesoftware.code-spell-checker
+  p6df::modules::vscode::extension::install v4run.transpose
+  p6df::modules::vscode::extension::install VisualStudioExptTeam.vscodeintellicode
+  p6df::modules::vscode::extension::install wmaurer.change-case
 
   # community/publishing
-  code --install-extension MS-vsliveshare.vsliveshare
-  code --install-extension ritwickdey.LiveServer
-  code --install-extension sneezry.vscode-devto
+  p6df::modules::vscode::extension::install MS-vsliveshare.vsliveshare
+  p6df::modules::vscode::extension::install ritwickdey.LiveServer
+  p6df::modules::vscode::extension::install sneezry.vscode-devto
 
   # misc
-  code --install-extension arcanis.vscode-zipfs
-  code --install-extension esbenp.prettier-vscode
-  code --install-extension hbenl.vscode-test-explorer
-  code --install-extension jebbs.plantuml
-  code --install-extension VisualStudioExptTeam.intellicode-api-usage-examples
-  code --install-extension ms-vscode.test-adapter-converter
-  code --install-extension redhat.vscode-commons
-  code --install-extension ryu1kn.partial-diff
+  p6df::modules::vscode::extension::install arcanis.vscode-zipfs
+  p6df::modules::vscode::extension::install esbenp.prettier-vscode
+  p6df::modules::vscode::extension::install hbenl.vscode-test-explorer
+  p6df::modules::vscode::extension::install jebbs.plantuml
+  p6df::modules::vscode::extension::install VisualStudioExptTeam.intellicode-api-usage-examples
+  p6df::modules::vscode::extension::install ms-vscode.test-adapter-converter
+  p6df::modules::vscode::extension::install redhat.vscode-commons
+  p6df::modules::vscode::extension::install ryu1kn.partial-diff
 
-  #  code --install-extension thundra.thundra-debugger
-  #  code --install-extension Tyriar.lorem-ipsu
+  #  p6df::modules::vscode::extension::install thundra.thundra-debugger
+  #  p6df::modules::vscode::extension::install Tyriar.lorem-ipsu
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::vscodes::config()
+#
+#>
+######################################################################
+p6df::modules::vscode::vscodes::config() {
+
+  cat <<'EOF'
+  "breadcrumbs.enabled": true,
+  "css.validate": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorStyle": "block",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": false,
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnType": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.preview": true,
+  "editor.suggest.showMethods": true,
+  "editor.suggestSelection": "first",
+  "editor.tabCompletion": "on",
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.renderWhitespace": "boundary",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "telemetry.telemetryLevel": "off",
+  "redhat.telemetry.enabled": false,
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/opt/homebrew/bin/zsh",
+      "args": ["-l"]
+    }
+  },
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "block",
+  "terminal.integrated.environmentChangesIndicator": "warnonly",
+  "terminal.integrated.scrollback": 100000,
+  "terminal.integrated.shellIntegration.history": 10000,
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.startupEditor": "none",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "remote.SSH.remotePlatform": {
+    "*.gitpod.io": "linux"
+  },
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.excludeBySource": ["cSpell"],
+  "cSpell.userWords": ["awscdk"],
+  "liveServer.settings.CustomBrowser": "chrome",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "http.systemCertificatesNode": true,
+  "sonarlint.pathToNodeExecutable": "node",
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
+EOF
+
   p6_return_void
 }
 
@@ -73,23 +148,6 @@ p6df::modules::vscode::external::brew() {
 
   p6df::core::homebrew::cli::brew::install --cask visual-studio-code
 #  p6df::core::homebrew::cli::brew::install --cask visual-studio-code@insiders
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::home::symlink()
-#
-#  Environment:	 HOME P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
-#>
-######################################################################
-p6df::modules::vscode::home::symlink() {
-
-  ## fill in template
-  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-vscode/share/settings.json" "$HOME/Library/Application\ Support/Code/User/settings.json"
-  p6_file_symlink "Library/Application\ Support/Code/User/globalStorage/.vscode" "."
 
   p6_return_void
 }
@@ -122,15 +180,45 @@ p6df::modules::vscode::aliases::init() {
 p6df::modules::vscode::p6code() {
   shift 0
 
-  local base="${HOME}/.vscode-sandboxes/${P6_VSCODE_PROFILE}"
+  local base="${HOME}/.vscode-sandboxes/${P6_DFZ_PROFILE_VSCODE}"
   local user_data="${base}/user-data"
   local extensions="${base}/extensions"
 
   mkdir -p "${user_data}/User" "${extensions}"
 
+  # Generate and install settings
+  local settings
+  settings=$(p6df::modules::vscode::settings::collect)
+  p6_echo "$settings" | jq '.' > "${user_data}/User/settings.json"
+
   code --user-data-dir="${user_data}" --extensions-dir="${extensions}" "$@"
 
   p6_return_code_as_code "$?"
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::extension::install(extension_id)
+#
+#  Args:
+#	extension_id -
+#
+#  Environment:	 HOME P6_VSCODE_PROFILE
+#>
+######################################################################
+p6df::modules::vscode::extension::install() {
+  local extension_id="$1"
+
+  local base="${HOME}/.vscode-sandboxes/${P6_DFZ_PROFILE_VSCODE}"
+  local user_data="${base}/user-data"
+  local extensions="${base}/extensions"
+
+  mkdir -p "${user_data}/User" "${extensions}"
+
+  code --user-data-dir="${user_data}" --extensions-dir="${extensions}" --install-extension "$extension_id"
+
+  p6_return_void
 }
 
 ######################################################################
@@ -184,6 +272,92 @@ p6df::modules::vscode::profile::on() {
 p6df::modules::vscode::profile::off() {
 
   p6_env_export_un P6_DFZ_PROFILE_VSCODE
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::settings::generate()
+#
+#  Environment:	 P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
+#>
+######################################################################
+p6df::modules::vscode::settings::generate() {
+
+  local output_file="$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-vscode/share/settings.json"
+
+  # Collect all config snippets
+  local merged
+  merged=$(p6df::modules::vscode::settings::collect)
+
+  # Write formatted JSON
+  p6_echo "$merged" | jq '.' > "$output_file"
+
+  p6_msg "Generated: $output_file"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::settings::collect()
+#
+#  Environment:	 P6_DFZ_MODULES
+#>
+######################################################################
+p6df::modules::vscode::settings::collect() {
+
+  local merged="{}"
+
+  # Iterate through all loaded modules
+  local module
+  for module in $(p6_vertical "$P6_DFZ_MODULES"); do
+    local snippet=$(p6df::modules::vscode::settings::module::config "$module")
+
+    if ! p6_string_blank "$snippet"; then
+      # Deep merge using jq
+      merged=$(p6_echo "$merged" | jq -s --argjson new "{$snippet}" '.[0] * $new')
+    fi
+  done
+
+  p6_echo "$merged"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::settings::module::config(module)
+#
+#  Args:
+#	module -
+#
+#  Environment:	 P6_DFZ_SRC_DIR
+#>
+######################################################################
+p6df::modules::vscode::settings::module::config() {
+  local module="$1"
+
+  local dir="$P6_DFZ_SRC_DIR/$module"
+
+  # Parse module to get function prefix
+  # %repo
+  p6df::core::module::parse "$module" "$dir"
+  # shellcheck disable=1087,2125,2154
+  local prefix=$repo[prefix]
+  unset repo
+
+  # Construct config function name
+  local config_func="${prefix}::vscodes::config"
+
+  # Check if function exists and call it
+  if type -f "$config_func" >/dev/null 2>&1; then
+    $config_func
+  fi
 
   p6_return_void
 }
