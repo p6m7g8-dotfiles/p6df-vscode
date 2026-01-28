@@ -176,6 +176,26 @@ p6df::modules::vscode::aliases::init() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::vscode::langs()
+#
+#>
+######################################################################
+p6df::modules::vscode::langs() {
+
+  p6df::modules::vscode::sandbox::create shell    "Dark+"               vscode shell github
+  p6df::modules::vscode::sandbox::create python   "Light+"              vscode shell github python
+  p6df::modules::vscode::sandbox::create rust     "Dracula"             vscode shell github rust
+  p6df::modules::vscode::sandbox::create go       "Tomorrow Night Blue" vscode shell github go
+  p6df::modules::vscode::sandbox::create nextjs   "GitHub Dark"         vscode shell github eslint js playwright
+  p6df::modules::vscode::sandbox::create rails    "Solarized Dark"      vscode shell github ruby rails
+  p6df::modules::vscode::sandbox::create cdk      "Kimbie"              vscode shell github aws js
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
 # Function: str str = p6df::modules::vscode::prompt::mod()
 #
 #  Returns:
@@ -194,6 +214,7 @@ p6df::modules::vscode::prompt::mod() {
   p6_return_str "$str"
 }
 
+# shellcheck disable=2329
 ######################################################################
 #<
 #
@@ -205,7 +226,6 @@ p6df::modules::vscode::prompt::mod() {
 #  Environment:	 HOME P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR
 #>
 ######################################################################
-# shellcheck disable=2329
 p6df::modules::vscode::profile::on() {
   local profile="$1"
 
@@ -216,6 +236,7 @@ p6df::modules::vscode::profile::on() {
   p6_return_void
 }
 
+# shellcheck disable=2329
 ######################################################################
 #<
 #
@@ -224,7 +245,6 @@ p6df::modules::vscode::profile::on() {
 #  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
-# shellcheck disable=2329
 p6df::modules::vscode::profile::off() {
 
   p6_env_export_un P6_DFZ_PROFILE_VSCODE

@@ -2,10 +2,10 @@
 ######################################################################
 #<
 #
-# Function: path dir = p6df::modules::vscode::sandbox::dir([sandbox_name])
+# Function: path dir = p6df::modules::vscode::sandbox::dir([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])
 #
 #  Args:
-#	OPTIONAL sandbox_name - defaults to P6_DFZ_VSCODE_SANDBOX_NAME
+#	OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
 #
 #  Returns:
 #	path - dir
@@ -24,15 +24,15 @@ p6df::modules::vscode::sandbox::dir() {
 ######################################################################
 #<
 #
-# Function: path dir = p6df::modules::vscode::sandbox::user_data_dir([sandbox_name])
+# Function: path dir = p6df::modules::vscode::sandbox::user_data_dir([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])
 #
 #  Args:
-#	OPTIONAL sandbox_name - defaults to P6_DFZ_VSCODE_SANDBOX_NAME
+#	OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
 #
 #  Returns:
 #	path - dir
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::sandbox::user_data_dir() {
@@ -46,15 +46,15 @@ p6df::modules::vscode::sandbox::user_data_dir() {
 ######################################################################
 #<
 #
-# Function: path dir = p6df::modules::vscode::sandbox::extensions_dir([sandbox_name])
+# Function: path dir = p6df::modules::vscode::sandbox::extensions_dir([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])
 #
 #  Args:
-#	OPTIONAL sandbox_name - defaults to P6_DFZ_VSCODE_SANDBOX_NAME
+#	OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
 #
 #  Returns:
 #	path - dir
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::sandbox::extensions_dir() {
@@ -68,15 +68,15 @@ p6df::modules::vscode::sandbox::extensions_dir() {
 ######################################################################
 #<
 #
-# Function: path file = p6df::modules::vscode::sandbox::settings_file([sandbox_name])
+# Function: path settings_file = p6df::modules::vscode::sandbox::settings_file([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])
 #
 #  Args:
-#	OPTIONAL sandbox_name - defaults to P6_DFZ_VSCODE_SANDBOX_NAME
+#	OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
 #
 #  Returns:
-#	path - file
+#	path - settings_file
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::sandbox::settings_file() {
@@ -91,17 +91,16 @@ p6df::modules::vscode::sandbox::settings_file() {
 ######################################################################
 #<
 #
-# Function: str dir = p6df::modules::vscode::sandbox::create(sandbox_name, theme, modules...)
+# Function: str dir = p6df::modules::vscode::sandbox::create(sandbox_name, theme, ...)
 #
 #  Args:
 #	sandbox_name -
-#	theme - REQUIRED
-#	modules... - array of modules
+#	theme -
+#	... - 
 #
 #  Returns:
 #	str - dir
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR
 #>
 ######################################################################
 p6df::modules::vscode::sandbox::create() {
@@ -109,11 +108,8 @@ p6df::modules::vscode::sandbox::create() {
   local theme="$2"
   shift 2
 
-  local -a modules
-  local module
-  for module in "$@"; do
-    modules+=("$module")
-  done
+  # P6_DFZ_VSCODE_SANDBOX_NAME
+  p6df::modules::vscode::sandbox::select "$sandbox_name"
 
   local dir="$(p6df::modules::vscode::sandbox::dir "$sandbox_name")"
   p6_dir_mk "$dir"
@@ -121,10 +117,10 @@ p6df::modules::vscode::sandbox::create() {
   p6_dir_mk "$dir/extensions"
 
   # settings
-  p6df::modules::vscode::settings::create "$sandbox_name" "$theme" "${modules[@]}"
+  p6df::modules::vscode::settings::create "$sandbox_name" "$theme" "$@"
 
   # extensions
-  p6df::modules::vscode::extensions::create "${modules[@]}"
+  p6df::modules::vscode::extensions::create "$@"
 
   p6_return_str "$dir"
 }
@@ -132,12 +128,16 @@ p6df::modules::vscode::sandbox::create() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::sandbox::runner()
+# Function: p6df::modules::vscode::sandbox::runner(...)
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
+#  Args:
+#	... - 
+#
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::sandbox::runner() {
+  shift 0
 
   local user_data_dir=$(p6df::modules::vscode::sandbox::user_data_dir)
   local extensions_dir=$(p6df::modules::vscode::sandbox::extensions_dir "$P6_DFZ_VSCODE_SANDBOX_NAME")
