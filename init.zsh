@@ -190,6 +190,8 @@ p6df::modules::vscode::langs() {
   p6df::modules::vscode::sandbox::create rails    "Solarized Dark"      vscode shell github ruby rails
   p6df::modules::vscode::sandbox::create cdk      "Kimbie"              vscode shell github aws js
 
+  p6_env_export_un "P6_DFZ_VSCODE_SANDBOX_NAME"
+
   p6_return_void
 }
 
