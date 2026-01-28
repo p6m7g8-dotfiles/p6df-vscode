@@ -1,0 +1,22 @@
+# shellcheck shell=bash
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::extensions::create(modules...)
+#
+#  Args:
+#	modules... - array of modules
+#
+#>
+######################################################################
+p6df::modules::vscode::extensions::create() {
+  shift 0
+
+  for module in "$@"; do
+    if type "p6df::modules::${module}::vscodes" >/dev/null 2>&1; then
+      p6df::modules::"${module}"::vscodes
+    fi
+  done
+
+  p6_return_void
+}

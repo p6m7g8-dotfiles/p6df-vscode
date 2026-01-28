@@ -61,7 +61,6 @@ p6df::modules::vscode::vscodes() {
   #  p6df::modules::vscode::extension::install Tyriar.lorem-ipsu
   p6_return_void
 }
-
 ######################################################################
 #<
 #
@@ -140,14 +139,19 @@ EOF
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::external::brew()
+# Function: p6df::modules::vscode::init(_module, dir)
+#
+#  Args:
+#	_module -
+#	dir -
 #
 #>
 ######################################################################
-p6df::modules::vscode::external::brew() {
+p6df::modules::vscode::init() {
+  local _module="$1"
+  local dir="$2"
 
-  p6df::core::homebrew::cli::brew::install --cask visual-studio-code
-#  p6df::core::homebrew::cli::brew::install --cask visual-studio-code@insiders
+  p6_bootstrap "$dir"
 
   p6_return_void
 }
@@ -161,62 +165,10 @@ p6df::modules::vscode::external::brew() {
 ######################################################################
 p6df::modules::vscode::aliases::init() {
 
-  p6_alias "p6_code" "p6df::modules::vscode::p6code"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::p6code(...)
-#
-#  Args:
-#	... - 
-#
-#  Environment:	 HOME P6_VSCODE_PROFILE
-#>
-######################################################################
-p6df::modules::vscode::p6code() {
-  shift 0
-
-  local base="${HOME}/.vscode-sandboxes/${P6_DFZ_PROFILE_VSCODE}"
-  local user_data="${base}/user-data"
-  local extensions="${base}/extensions"
-
-  mkdir -p "${user_data}/User" "${extensions}"
-
-  # Generate and install settings
-  local settings
-  settings=$(p6df::modules::vscode::settings::collect)
-  p6_echo "$settings" | jq '.' > "${user_data}/User/settings.json"
-
-  code --user-data-dir="${user_data}" --extensions-dir="${extensions}" "$@"
-
-  p6_return_code_as_code "$?"
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::extension::install(extension_id)
-#
-#  Args:
-#	extension_id -
-#
-#  Environment:	 HOME P6_VSCODE_PROFILE
-#>
-######################################################################
-p6df::modules::vscode::extension::install() {
-  local extension_id="$1"
-
-  local base="${HOME}/.vscode-sandboxes/${P6_DFZ_PROFILE_VSCODE}"
-  local user_data="${base}/user-data"
-  local extensions="${base}/extensions"
-
-  mkdir -p "${user_data}/User" "${extensions}"
-
-  code --user-data-dir="${user_data}" --extensions-dir="${extensions}" --install-extension "$extension_id"
+  p6_alias "p6_code" "p6df::modules::vscode::sandbox::runner"
+  p6_alias "cde" "p6_code"
+  p6_alias "cdel" "cde --list-extensions"
+  p6_alias "cdei" "p6df::modules::vscode::extension::install"
 
   p6_return_void
 }
@@ -229,14 +181,14 @@ p6df::modules::vscode::extension::install() {
 #  Returns:
 #	str - str
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE
+#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::prompt::mod() {
 
   local str
-  if ! p6_string_blank "$P6_DFZ_PROFILE_VSCODE"; then
-    str="vscode:\t\t  $P6_DFZ_PROFILE_VSCODE:"
+  if p6_string_blank_NOT "$P6_DFZ_VSCODE_SANDBOX_NAME"; then
+    str="vscode:\t\t  $P6_DFZ_PROFILE_VSCODE: $P6_DFZ_VSCODE_SANDBOX_NAME"
   fi
 
   p6_return_str "$str"
@@ -250,11 +202,14 @@ p6df::modules::vscode::prompt::mod() {
 #  Args:
 #	profile -
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE
+#  Environment:	 HOME P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR
 #>
 ######################################################################
+# shellcheck disable=2329
 p6df::modules::vscode::profile::on() {
   local profile="$1"
+
+  p6_env_export "P6_DFZ_VSCODE_SANDBOX_DIR" "$HOME/.vscode-sandboxes"
 
   p6_env_export "P6_DFZ_PROFILE_VSCODE" "$profile"
 
@@ -266,98 +221,15 @@ p6df::modules::vscode::profile::on() {
 #
 # Function: p6df::modules::vscode::profile::off()
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE
+#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
+# shellcheck disable=2329
 p6df::modules::vscode::profile::off() {
 
   p6_env_export_un P6_DFZ_PROFILE_VSCODE
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::settings::generate()
-#
-#  Environment:	 P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
-#>
-######################################################################
-p6df::modules::vscode::settings::generate() {
-
-  local output_file="$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-vscode/share/settings.json"
-
-  # Collect all config snippets
-  local merged
-  merged=$(p6df::modules::vscode::settings::collect)
-
-  # Write formatted JSON
-  p6_echo "$merged" | jq '.' > "$output_file"
-
-  p6_msg "Generated: $output_file"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::settings::collect()
-#
-#  Environment:	 P6_DFZ_MODULES
-#>
-######################################################################
-p6df::modules::vscode::settings::collect() {
-
-  local merged="{}"
-
-  # Iterate through all loaded modules
-  local module
-  for module in $(p6_vertical "$P6_DFZ_MODULES"); do
-    local snippet=$(p6df::modules::vscode::settings::module::config "$module")
-
-    if ! p6_string_blank "$snippet"; then
-      # Deep merge using jq
-      merged=$(p6_echo "$merged" | jq -s --argjson new "{$snippet}" '.[0] * $new')
-    fi
-  done
-
-  p6_echo "$merged"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::settings::module::config(module)
-#
-#  Args:
-#	module -
-#
-#  Environment:	 P6_DFZ_SRC_DIR
-#>
-######################################################################
-p6df::modules::vscode::settings::module::config() {
-  local module="$1"
-
-  local dir="$P6_DFZ_SRC_DIR/$module"
-
-  # Parse module to get function prefix
-  # %repo
-  p6df::core::module::parse "$module" "$dir"
-  # shellcheck disable=1087,2125,2154
-  local prefix=$repo[prefix]
-  unset repo
-
-  # Construct config function name
-  local config_func="${prefix}::vscodes::config"
-
-  # Check if function exists and call it
-  if type -f "$config_func" >/dev/null 2>&1; then
-    $config_func
-  fi
+  p6_env_export_un P6_DFZ_VSCODE_SANDBOX_DIR
+  p6_env_export_un P6_DFZ_VSCODE_SANDBOX_NAME
 
   p6_return_void
 }
