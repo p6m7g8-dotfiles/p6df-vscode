@@ -2,12 +2,12 @@
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::settings::create(sandbox_name, theme, modules...)
+# Function: p6df::modules::vscode::settings::create(sandbox_name, theme, ...)
 #
 #  Args:
 #	sandbox_name -
-#	theme - REQUIRED
-#	modules... - array of modules
+#	theme -
+#	... - 
 #
 #>
 ######################################################################

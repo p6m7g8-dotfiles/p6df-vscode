@@ -2,10 +2,10 @@
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::extensions::create(modules...)
+# Function: p6df::modules::vscode::extensions::create(...)
 #
 #  Args:
-#	modules... - array of modules
+#	... - 
 #
 #>
 ######################################################################
