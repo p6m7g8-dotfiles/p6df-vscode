@@ -59,6 +59,7 @@ p6df::modules::vscode::vscodes() {
 
   #  p6df::modules::vscode::extension::install thundra.thundra-debugger
   #  p6df::modules::vscode::extension::install Tyriar.lorem-ipsu
+
   p6_return_void
 }
 ######################################################################
@@ -170,6 +171,16 @@ p6df::modules::vscode::aliases::init() {
   p6_alias "cdel" "cde --list-extensions"
   p6_alias "cdei" "p6df::modules::vscode::extension::install"
 
+  p6_alias "scde"  "p6df::modules::vscode::sandbox::select shell; cde"
+  p6_alias "pycde" "p6df::modules::vscode::sandbox::select python; cde"
+  p6_alias "rucde" "p6df::modules::vscode::sandbox::select rust; cde"
+  p6_alias "gcde"  "p6df::modules::vscode::sandbox::select go; cde"
+  p6_alias "ncde"  "p6df::modules::vscode::sandbox::select nextjs; cde"
+  p6_alias "rcde"  "p6df::modules::vscode::sandbox::select rails; cde"
+  p6_alias "ccde"  "p6df::modules::vscode::sandbox::select cdk; cde"
+
+  p6_alias "code" "p6_code"
+
   p6_return_void
 }
 
@@ -182,13 +193,13 @@ p6df::modules::vscode::aliases::init() {
 ######################################################################
 p6df::modules::vscode::langs() {
 
-  p6df::modules::vscode::sandbox::create shell    "Dark+"               vscode shell github
-  p6df::modules::vscode::sandbox::create python   "Light+"              vscode shell github python
-  p6df::modules::vscode::sandbox::create rust     "Dracula"             vscode shell github rust
+  p6df::modules::vscode::sandbox::create shell    "Default Dark+"       vscode shell github
+  p6df::modules::vscode::sandbox::create python   "iDefault Light+"     vscode shell github python
+  p6df::modules::vscode::sandbox::create rust     "Red"                 vscode shell github rust
   p6df::modules::vscode::sandbox::create go       "Tomorrow Night Blue" vscode shell github go
-  p6df::modules::vscode::sandbox::create nextjs   "GitHub Dark"         vscode shell github eslint js playwright
+  p6df::modules::vscode::sandbox::create nextjs   "Abyss"               vscode shell github eslint js playwright
   p6df::modules::vscode::sandbox::create rails    "Solarized Dark"      vscode shell github ruby rails
-  p6df::modules::vscode::sandbox::create cdk      "Kimbie"              vscode shell github aws js
+  p6df::modules::vscode::sandbox::create cdk      "Kimbie Dark"         vscode shell github aws js
 
   p6_env_export_un "P6_DFZ_VSCODE_SANDBOX_NAME"
 
