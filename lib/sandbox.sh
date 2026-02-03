@@ -142,7 +142,9 @@ p6df::modules::vscode::sandbox::runner() {
   local user_data_dir=$(p6df::modules::vscode::sandbox::user_data_dir)
   local extensions_dir=$(p6df::modules::vscode::sandbox::extensions_dir "$P6_DFZ_VSCODE_SANDBOX_NAME")
 
+  p6_env_export P6_DFZ_PROMPT_IN_VSCODE 1
   code --user-data-dir "$user_data_dir" --extensions-dir "$extensions_dir" "$@"
+  p6_env_export_un P6_DFZ_PROMPT_IN_VSCODE
 
   p6_return_void
 }
