@@ -32,7 +32,13 @@ TODO: Add a short summary of this module.
 
 ### Aliases
 
-- `p6_code` -> `p6df::modules::vscode::p6code`
+- `cde` -> `p6_code`
+- `cdei` -> `p6df::modules::vscode::extension::install`
+- `cdel` -> `cde --list-extensions`
+- `code` -> `p6_code`
+- `p6_code` -> `p6df::modules::vscode::sandbox::runner`
+- `pycde` -> `p6df::modules::vscode::sandbox::select python; cde`
+- `rucde` -> `p6df::modules::vscode::sandbox::select rust; cde`
 
 ### Functions
 
@@ -42,25 +48,85 @@ TODO: Add a short summary of this module.
 
 - `p6df::modules::vscode::aliases::init()`
 - `p6df::modules::vscode::deps()`
-- `p6df::modules::vscode::external::brew()`
-- `p6df::modules::vscode::home::symlink()`
-- `p6df::modules::vscode::p6code(...)`
+- `p6df::modules::vscode::init(_module, dir)`
+  - Args:
+    - _module - 
+    - dir - 
+- `p6df::modules::vscode::langs()`
 - `p6df::modules::vscode::profile::off()`
 - `p6df::modules::vscode::profile::on(profile)`
+  - Args:
+    - profile - 
 - `p6df::modules::vscode::vscodes()`
+- `p6df::modules::vscode::vscodes::config()`
 - `str str = p6df::modules::vscode::prompt::mod()`
+
+#### p6df-vscode/lib
+
+##### p6df-vscode/lib/extension.sh
+
+- `p6df::modules::vscode::extension::install(extension_id)`
+  - Args:
+    - extension_id - 
+
+##### p6df-vscode/lib/extensions.sh
+
+- `p6df::modules::vscode::extensions::create(...)`
+  - Args:
+    - ... - 
+
+##### p6df-vscode/lib/sandbox.sh
+
+- `p6df::modules::vscode::sandbox::runner(...)`
+  - Args:
+    - ... - 
+- `p6df::modules::vscode::sandbox::select(sandbox_name)`
+  - Args:
+    - sandbox_name - 
+- `path dir = p6df::modules::vscode::sandbox::dir([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])`
+  - Args:
+    - OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
+- `path dir = p6df::modules::vscode::sandbox::extensions_dir([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])`
+  - Args:
+    - OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
+- `path dir = p6df::modules::vscode::sandbox::user_data_dir([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])`
+  - Args:
+    - OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
+- `path settings_file = p6df::modules::vscode::sandbox::settings_file([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])`
+  - Args:
+    - OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
+- `str dir = p6df::modules::vscode::sandbox::create(sandbox_name, theme, ...)`
+  - Args:
+    - sandbox_name - 
+    - theme - 
+    - ... - 
+
+##### p6df-vscode/lib/sandboxes.sh
+
+- `p6df::modules::vscode::sandboxes::init()`
+
+##### p6df-vscode/lib/settings.sh
+
+- `p6df::modules::vscode::settings::create(sandbox_name, theme, ...)`
+  - Args:
+    - sandbox_name - 
+    - theme - 
+    - ... - 
 
 ## Hierarchy
 
 ```text
 .
 ├── init.zsh
-├── README.md
-└── share
-    ├── cspell.userWords.json
-    └── settings.json
+├── lib
+│   ├── extension.sh
+│   ├── extensions.sh
+│   ├── sandbox.sh
+│   ├── sandboxes.sh
+│   └── settings.sh
+└── README.md
 
-2 directories, 4 files
+2 directories, 7 files
 ```
 
 ## Author

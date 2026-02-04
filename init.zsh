@@ -189,6 +189,7 @@ p6df::modules::vscode::aliases::init() {
 #
 # Function: p6df::modules::vscode::langs()
 #
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::langs() {
