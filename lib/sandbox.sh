@@ -133,7 +133,7 @@ p6df::modules::vscode::sandbox::create() {
 #  Args:
 #	... - 
 #
-#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
+#  Environment:	 P6_DFZ_PROMPT_IN_VSCODE P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::sandbox::runner() {
