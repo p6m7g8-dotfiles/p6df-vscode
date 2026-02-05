@@ -88,6 +88,8 @@ p6df::modules::vscode::vscodes::config() {
   "editor.suggest.showMethods": true,
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "on",
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 120,
   "editor.acceptSuggestionOnEnter": "on",
   "editor.renderWhitespace": "boundary",
   "editor.quickSuggestions": {
