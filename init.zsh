@@ -22,40 +22,37 @@ p6df::modules::vscode::deps() {
 p6df::modules::vscode::vscodes() {
 
   # md
-  p6df::modules::vscode::extension::install bierner.markdown-preview-github-styles
-  p6df::modules::vscode::extension::install shd101wyy.markdown-preview-enhanced
-  p6df::modules::vscode::extension::install yzane.markdown-pdf
-  p6df::modules::vscode::extension::install yzhang.markdown-all-in-one
+  p6df::modules::vscode::extension::install bierner.markdown-preview-github-styles    # markdown-preview-github-styles colorTheme: "auto" || GitHub-styled markdown preview
+  p6df::modules::vscode::extension::install shd101wyy.markdown-preview-enhanced       # markdown-preview-enhanced.enablePreview: true || Enhanced markdown preview and export
+  p6df::modules::vscode::extension::install yzane.markdown-pdf                        # markdown-pdf.outputDirectory: "" || Export markdown to PDF/HTML/PNG
+  p6df::modules::vscode::extension::install yzhang.markdown-all-in-one                # [markdown].editor.defaultFormatter: "yzhang.markdown-all-in-one" || Markdown editing helpers and formatter
 
   # yaml
-  p6df::modules::vscode::extension::install redhat.vscode-yaml
+  p6df::modules::vscode::extension::install redhat.vscode-yaml                        # yaml.format.enable: true || YAML validation and formatting
 
   # ui
-  p6df::modules::vscode::extension::install aaron-bond.better-comments
-  p6df::modules::vscode::extension::install alefragnani.Bookmarks
-  p6df::modules::vscode::extension::install christian-kohler.path-intellisense
-  p6df::modules::vscode::extension::install lfs.vscode-emacs-friendly
-  p6df::modules::vscode::extension::install naumovs.color-highlight
-  p6df::modules::vscode::extension::install shardulm94.trailing-spaces
-  p6df::modules::vscode::extension::install streetsidesoftware.code-spell-checker
-  p6df::modules::vscode::extension::install v4run.transpose
-  p6df::modules::vscode::extension::install VisualStudioExptTeam.vscodeintellicode
-  p6df::modules::vscode::extension::install wmaurer.change-case
+  p6df::modules::vscode::extension::install aaron-bond.better-comments                # better-comments.tags: [] || Highlight TODO/FIXME/NOTE comment tags
+  p6df::modules::vscode::extension::install alefragnani.Bookmarks                     # bookmarks.useWorkplaceBookmarks: true || Toggle and list bookmarks in files
+  p6df::modules::vscode::extension::install christian-kohler.path-intellisense        # path-intellisense.extensionOnImport: true || Path completion in strings/imports
+  p6df::modules::vscode::extension::install lfs.vscode-emacs-friendly                 # emacsFriendly.all: true || Emacs-like keybindings and behaviors
+  p6df::modules::vscode::extension::install naumovs.color-highlight                   # color-highlight.markerType: "dot" || Inline color previews
+  p6df::modules::vscode::extension::install shardulm94.trailing-spaces                # trailing-spaces.trimOnSave: true || Highlight and trim trailing whitespace
+  p6df::modules::vscode::extension::install streetsidesoftware.code-spell-checker     # cSpell.enabled: true || Spell checking in code and text
+  p6df::modules::vscode::extension::install v4run.transpose                           # transpose.rotate: true || Swap/transpose words or characters
+  p6df::modules::vscode::extension::install wmaurer.change-case                       # changeCase.locale: "en-US" || Convert text casing
 
   # community/publishing
-  p6df::modules::vscode::extension::install MS-vsliveshare.vsliveshare
-  p6df::modules::vscode::extension::install ritwickdey.LiveServer
-  p6df::modules::vscode::extension::install sneezry.vscode-devto
+  p6df::modules::vscode::extension::install MS-vsliveshare.vsliveshare                # liveshare.presence: true || Collaborative coding sessions
+  p6df::modules::vscode::extension::install ritwickdey.LiveServer                     # liveServer.settings.CustomBrowser: "chrome" || Local dev server with live reload
+  p6df::modules::vscode::extension::install sneezry.vscode-devto                      # devto.token: "" || Publish to dev.to from VS Code
 
   # misc
-  p6df::modules::vscode::extension::install arcanis.vscode-zipfs
-  p6df::modules::vscode::extension::install esbenp.prettier-vscode
-  p6df::modules::vscode::extension::install hbenl.vscode-test-explorer
-  p6df::modules::vscode::extension::install jebbs.plantuml
-  p6df::modules::vscode::extension::install VisualStudioExptTeam.intellicode-api-usage-examples
-  p6df::modules::vscode::extension::install ms-vscode.test-adapter-converter
-  p6df::modules::vscode::extension::install redhat.vscode-commons
-  p6df::modules::vscode::extension::install ryu1kn.partial-diff
+  p6df::modules::vscode::extension::install arcanis.vscode-zipfs                      # zipfs.enable: true || Browse zip archives as folders
+  p6df::modules::vscode::extension::install hbenl.vscode-test-explorer                # testExplorer.on: true || Unified test explorer UI
+  p6df::modules::vscode::extension::install jebbs.plantuml                            # plantuml.render: "local" || Render UML diagrams
+  p6df::modules::vscode::extension::install ms-vscode.test-adapter-converter          # testAdapter.converter.enabled: true || Bridge old test adapters
+  p6df::modules::vscode::extension::install redhat.vscode-commons                     # redhat.telemetry.enabled: false || Shared Red Hat extension utilities
+  p6df::modules::vscode::extension::install ryu1kn.partial-diff                       # partialDiff.enableTelemetry: false || Compare selections or clipboard
 
   #  p6df::modules::vscode::extension::install thundra.thundra-debugger
   #  p6df::modules::vscode::extension::install Tyriar.lorem-ipsu
@@ -72,68 +69,38 @@ p6df::modules::vscode::vscodes() {
 p6df::modules::vscode::vscodes::config() {
 
   cat <<'EOF'
-  "breadcrumbs.enabled": true,
-  "css.validate": false,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.cursorBlinking": "phase",
-  "editor.cursorStyle": "block",
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": false,
-  "editor.formatOnSaveMode": "file",
-  "editor.formatOnType": true,
-  "editor.inlineSuggest.enabled": true,
-  "editor.minimap.enabled": false,
-  "editor.snippetSuggestions": "top",
-  "editor.suggest.preview": true,
-  "editor.suggest.showMethods": true,
-  "editor.suggestSelection": "first",
-  "editor.tabCompletion": "on",
-  "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 120,
-  "editor.acceptSuggestionOnEnter": "on",
-  "editor.renderWhitespace": "boundary",
-  "editor.quickSuggestions": {
-    "strings": true
-  },
-  "security.workspace.trust.untrustedFiles": "open",
-  "telemetry.telemetryLevel": "off",
-  "redhat.telemetry.enabled": false,
-  "terminal.integrated.profiles.osx": {
-    "zsh": {
-      "path": "/opt/homebrew/bin/zsh",
-      "args": ["-l"]
+    "[jsonc]": {
+      "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.cursorBlinking": "phase",
+    "editor.cursorStyle": "block",
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.minimap.enabled": false,
+    "editor.snippetSuggestions": "top",
+    "editor.suggest.preview": true,
+    "editor.tabCompletion": "on",
+    "editor.wordWrap": "all",
+    "editor.wordWrapColumn": 120,
+    "editor.renderWhitespace": "boundary",
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "redhat.telemetry.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.shellIntegration.history": 10000,
+    "trailing-spaces.trimOnSave": true,
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.startupEditor": "none",
+    "[markdown]": {
+      "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     }
-  },
-  "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.cursorStyle": "block",
-  "terminal.integrated.environmentChangesIndicator": "warnonly",
-  "terminal.integrated.scrollback": 100000,
-  "terminal.integrated.shellIntegration.history": 10000,
-  "workbench.colorTheme": "Default Dark+",
-  "workbench.startupEditor": "none",
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
-  },
-  "remote.SSH.remotePlatform": {
-    "*.gitpod.io": "linux"
-  },
-  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
-  "errorLens.excludeBySource": ["cSpell"],
-  "cSpell.userWords": ["awscdk"],
-  "liveServer.settings.CustomBrowser": "chrome",
-  "liveServer.settings.donotShowInfoMsg": true,
-  "http.systemCertificatesNode": true,
-  "sonarlint.pathToNodeExecutable": "node",
-  "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
 EOF
 
   p6_return_void
