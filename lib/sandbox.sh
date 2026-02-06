@@ -60,7 +60,7 @@ p6df::modules::vscode::sandbox::user_data_dir() {
 p6df::modules::vscode::sandbox::extensions_dir() {
   local sandbox_name="${1:-$P6_DFZ_VSCODE_SANDBOX_NAME}"
 
-  local dir=$(p6df::modules::vscode::sandbox::dir "$sandbox_name")
+  local dir="$(p6df::modules::vscode::sandbox::dir "$sandbox_name")/extensions"
 
   p6_return_path "$dir"
 }
