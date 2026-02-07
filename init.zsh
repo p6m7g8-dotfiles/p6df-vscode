@@ -70,37 +70,37 @@ p6df::modules::vscode::vscodes::config() {
 
   cat <<'EOF'
     "[markdown]": {
-      "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+      "editor.defaultFormatter": "yzhang.markdown-all-in-one"  # Use Markdown All in One as the formatter
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "vscode.json-language-features"
+      "editor.defaultFormatter": "vscode.json-language-features" # Use built-in JSON formatter
     },
-    "editor.cursorBlinking": "phase",
-    "editor.cursorStyle": "block",
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.minimap.enabled": false,
-    "editor.snippetSuggestions": "top",
-    "editor.suggest.preview": true,
-    "editor.tabCompletion": "on",
-    "editor.wordWrap": "all",
-    "editor.wordWrapColumn": 120,
-    "editor.renderWhitespace": "boundary",
-    "editor.quickSuggestions": {
-      "strings": true
+    "editor.cursorBlinking": "phase",              # Cursor blinks with a smooth phase animation
+    "editor.cursorStyle": "block",                 # Use a block-style cursor
+    "editor.formatOnPaste": true,                  # Auto-format code when pasting
+    "editor.formatOnSave": true,                   # Auto-format files on save
+    "editor.formatOnType": true,                   # Auto-format while typing
+    "editor.minimap.enabled": false,               # Disable the minimap for a cleaner UI
+    "editor.snippetSuggestions": "top",            # Show snippet suggestions at the top of IntelliSense
+    "editor.suggest.preview": true,                # Preview suggestion results inline
+    "editor.tabCompletion": "on",                  # Enable tab-based completion
+    "editor.wordWrap": "all",                      # Wrap lines in all editors
+    "editor.wordWrapColumn": 120,                  # Preferred wrap column width
+    "editor.renderWhitespace": "boundary",         # Render whitespace only at word boundaries
+    "editor.quickSuggestions": {                   # Control quick suggestions behavior
+      "strings": true                              # Enable suggestions inside string literals
     },
-    "liveServer.settings.CustomBrowser": "chrome",
-    "liveServer.settings.donotShowInfoMsg": true,
-    "redhat.telemetry.enabled": false,
-    "security.workspace.trust.untrustedFiles": "open",
-    "telemetry.telemetryLevel": "off",
-    "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.scrollback": 100000,
-    "terminal.integrated.shellIntegration.history": 10000,
-    "trailing-spaces.trimOnSave": true,
-    "workbench.startupEditor": "none"
+    "liveServer.settings.CustomBrowser": "chrome", 		# Launch Live Server using Google Chrome
+    "liveServer.settings.donotShowInfoMsg": true,  		# Suppress Live Server info messages
+    "redhat.telemetry.enabled": false,             		# Disable Red Hat extension telemetry
+    "security.workspace.trust.untrustedFiles": "open", 		# Open untrusted files without prompting
+    "telemetry.telemetryLevel": "off",             		# Disable VS Code telemetry entirely
+    "terminal.integrated.copyOnSelection": true,  		# Copy text automatically when selecting in terminal
+    "terminal.integrated.cursorBlinking": true,    		# Enable cursor blinking in integrated terminal
+    "terminal.integrated.scrollback": 100000,      		# Increase terminal scrollback buffer size
+    "terminal.integrated.shellIntegration.history": 10000, 	# Retain shell integration command history
+    "trailing-spaces.trimOnSave": true,            		# Remove trailing whitespace on save
+    "workbench.startupEditor": "none"              		# Disable the startup editor / welcome page
 EOF
 
   p6_return_void
@@ -137,16 +137,17 @@ p6df::modules::vscode::aliases::init() {
 
   p6_alias "p6_code" "p6df::modules::vscode::sandbox::runner"
   p6_alias "cde" "p6_code"
-  p6_alias "cdel" "cde --list-extensions"
-  p6_alias "cdei" "p6df::modules::vscode::extension::install"
+  p6_alias "cdel" "p6df::modules::vscode::extensions::list"
+  p6_alias "cdeL" "p6df::modules::vscode::extension::install"
 
-  p6_alias "scde"  "p6df::modules::vscode::sandbox::select shell; cde"
-  p6_alias "pycde" "p6df::modules::vscode::sandbox::select python; cde"
-  p6_alias "rucde" "p6df::modules::vscode::sandbox::select rust; cde"
-  p6_alias "gcde"  "p6df::modules::vscode::sandbox::select go; cde"
-  p6_alias "ncde"  "p6df::modules::vscode::sandbox::select nextjs; cde"
-  p6_alias "rcde"  "p6df::modules::vscode::sandbox::select rails; cde"
-  p6_alias "ccde"  "p6df::modules::vscode::sandbox::select cdk; cde"
+  p6_alias "scde"  "p6df::modules::vscode::sandbox::select shell;  p6df::modules::vscode::sandbox::runner"
+  p6_alias "pycde" "p6df::modules::vscode::sandbox::select python; p6df::modules::vscode::sandbox::runner"
+  p6_alias "rucde" "p6df::modules::vscode::sandbox::select rust;   p6df::modules::vscode::sandbox::runner"
+  p6_alias "gcde"  "p6df::modules::vscode::sandbox::select go;     p6df::modules::vscode::sandbox::runner"
+  p6_alias "ncde"  "p6df::modules::vscode::sandbox::select nextjs; p6df::modules::vscode::sandbox::runner"
+  p6_alias "rcde"  "p6df::modules::vscode::sandbox::select rails;  p6df::modules::vscode::sandbox::runner"
+  p6_alias "ccde"  "p6df::modules::vscode::sandbox::select cdk;    p6df::modules::vscode::sandbox::runner"
+  p6_alias "ppcde" "p6df::modules::vscode::sandbox::select perl;   p6df::modules::vscode::sandbox::runner"
 
   p6_alias "code" "p6_code"
 
@@ -164,12 +165,13 @@ p6df::modules::vscode::aliases::init() {
 p6df::modules::vscode::langs() {
 
   p6df::modules::vscode::sandbox::create shell    "Default Dark+"       vscode shell github
-  p6df::modules::vscode::sandbox::create python   "Default Light+"     vscode shell github python
+  p6df::modules::vscode::sandbox::create python   "Default Light+"      vscode shell github python
   p6df::modules::vscode::sandbox::create rust     "Red"                 vscode shell github rust
   p6df::modules::vscode::sandbox::create go       "Tomorrow Night Blue" vscode shell github go
   p6df::modules::vscode::sandbox::create nextjs   "Abyss"               vscode shell github eslint js playwright
   p6df::modules::vscode::sandbox::create rails    "Solarized Dark"      vscode shell github ruby rails
   p6df::modules::vscode::sandbox::create cdk      "Kimbie Dark"         vscode shell github aws eslint js playwright
+  p6df::modules::vscode::sandbox::create perl     "Experimental Dark"   vscode shell github perl
 
   p6_env_export_un "P6_DFZ_VSCODE_SANDBOX_NAME"
 

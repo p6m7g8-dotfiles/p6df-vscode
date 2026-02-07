@@ -20,3 +20,17 @@ p6df::modules::vscode::extensions::create() {
 
   p6_return_void
 }
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::extensions::list()
+#
+#>
+######################################################################
+p6df::modules::vscode::extensions::list() {
+
+  p6df::modules::vscode::sandbox::runner --list-extensions
+
+  p6_return_void
+}
