@@ -50,7 +50,6 @@ p6df::modules::vscode::vscodes() {
   p6df::modules::vscode::extension::install arcanis.vscode-zipfs                      # zipfs.enable: true || Browse zip archives as folders
   p6df::modules::vscode::extension::install hbenl.vscode-test-explorer                # testExplorer.on: true || Unified test explorer UI
   p6df::modules::vscode::extension::install jebbs.plantuml                            # plantuml.render: "local" || Render UML diagrams
-  p6df::modules::vscode::extension::install ms-vscode.test-adapter-converter          # testAdapter.converter.enabled: true || Bridge old test adapters
   p6df::modules::vscode::extension::install redhat.vscode-commons                     # redhat.telemetry.enabled: false || Shared Red Hat extension utilities
   p6df::modules::vscode::extension::install ryu1kn.partial-diff                       # partialDiff.enableTelemetry: false || Compare selections or clipboard
 
