@@ -33,12 +33,13 @@ TODO: Add a short summary of this module.
 ### Aliases
 
 - `cde` -> `p6_code`
-- `cdei` -> `p6df::modules::vscode::extension::install`
-- `cdel` -> `cde --list-extensions`
+- `cdel` -> `p6df::modules::vscode::extensions::list`
+- `cdeL` -> `p6df::modules::vscode::extension::install`
 - `code` -> `p6_code`
 - `p6_code` -> `p6df::modules::vscode::sandbox::runner`
-- `pycde` -> `p6df::modules::vscode::sandbox::select python; cde`
-- `rucde` -> `p6df::modules::vscode::sandbox::select rust; cde`
+- `ppcde` -> `p6df::modules::vscode::sandbox::select perl;   p6df::modules::vscode::sandbox::runner`
+- `pycde` -> `p6df::modules::vscode::sandbox::select python; p6df::modules::vscode::sandbox::runner`
+- `rucde` -> `p6df::modules::vscode::sandbox::select rust;   p6df::modules::vscode::sandbox::runner`
 
 ### Functions
 
@@ -50,13 +51,13 @@ TODO: Add a short summary of this module.
 - `p6df::modules::vscode::deps()`
 - `p6df::modules::vscode::init(_module, dir)`
   - Args:
-    - _module - 
-    - dir - 
+    - _module
+    - dir
 - `p6df::modules::vscode::langs()`
 - `p6df::modules::vscode::profile::off()`
 - `p6df::modules::vscode::profile::on(profile)`
   - Args:
-    - profile - 
+    - profile
 - `p6df::modules::vscode::vscodes()`
 - `p6df::modules::vscode::vscodes::config()`
 - `str str = p6df::modules::vscode::prompt::mod()`
@@ -67,22 +68,23 @@ TODO: Add a short summary of this module.
 
 - `p6df::modules::vscode::extension::install(extension_id)`
   - Args:
-    - extension_id - 
+    - extension_id
 
 ##### p6df-vscode/lib/extensions.sh
 
 - `p6df::modules::vscode::extensions::create(...)`
   - Args:
-    - ... - 
+    - ...
+- `p6df::modules::vscode::extensions::list()`
 
 ##### p6df-vscode/lib/sandbox.sh
 
 - `p6df::modules::vscode::sandbox::runner(...)`
   - Args:
-    - ... - 
+    - ...
 - `p6df::modules::vscode::sandbox::select(sandbox_name)`
   - Args:
-    - sandbox_name - 
+    - sandbox_name
 - `path dir = p6df::modules::vscode::sandbox::dir([sandbox_name=$P6_DFZ_VSCODE_SANDBOX_NAME])`
   - Args:
     - OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
@@ -97,9 +99,9 @@ TODO: Add a short summary of this module.
     - OPTIONAL sandbox_name - [$P6_DFZ_VSCODE_SANDBOX_NAME]
 - `str dir = p6df::modules::vscode::sandbox::create(sandbox_name, theme, ...)`
   - Args:
-    - sandbox_name - 
-    - theme - 
-    - ... - 
+    - sandbox_name
+    - theme
+    - ...
 
 ##### p6df-vscode/lib/sandboxes.sh
 
@@ -109,9 +111,9 @@ TODO: Add a short summary of this module.
 
 - `p6df::modules::vscode::settings::create(sandbox_name, theme, ...)`
   - Args:
-    - sandbox_name - 
-    - theme - 
-    - ... - 
+    - sandbox_name
+    - theme
+    - ...
 
 ## Hierarchy
 
