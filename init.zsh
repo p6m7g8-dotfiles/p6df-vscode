@@ -69,12 +69,16 @@ p6df::modules::vscode::vscodes() {
 p6df::modules::vscode::vscodes::config() {
 
   cat <<'EOF'
+    "[markdown]": {
+      "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
     "[jsonc]": {
       "editor.defaultFormatter": "vscode.json-language-features"
     },
     "editor.cursorBlinking": "phase",
     "editor.cursorStyle": "block",
     "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.minimap.enabled": false,
     "editor.snippetSuggestions": "top",
@@ -96,11 +100,7 @@ p6df::modules::vscode::vscodes::config() {
     "terminal.integrated.scrollback": 100000,
     "terminal.integrated.shellIntegration.history": 10000,
     "trailing-spaces.trimOnSave": true,
-    "workbench.colorTheme": "Default Dark+",
-    "workbench.startupEditor": "none",
-    "[markdown]": {
-      "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-    }
+    "workbench.startupEditor": "none"
 EOF
 
   p6_return_void
@@ -164,12 +164,12 @@ p6df::modules::vscode::aliases::init() {
 p6df::modules::vscode::langs() {
 
   p6df::modules::vscode::sandbox::create shell    "Default Dark+"       vscode shell github
-  p6df::modules::vscode::sandbox::create python   "iDefault Light+"     vscode shell github python
+  p6df::modules::vscode::sandbox::create python   "Default Light+"     vscode shell github python
   p6df::modules::vscode::sandbox::create rust     "Red"                 vscode shell github rust
   p6df::modules::vscode::sandbox::create go       "Tomorrow Night Blue" vscode shell github go
   p6df::modules::vscode::sandbox::create nextjs   "Abyss"               vscode shell github eslint js playwright
   p6df::modules::vscode::sandbox::create rails    "Solarized Dark"      vscode shell github ruby rails
-  p6df::modules::vscode::sandbox::create cdk      "Kimbie Dark"         vscode shell github aws js
+  p6df::modules::vscode::sandbox::create cdk      "Kimbie Dark"         vscode shell github aws eslint js playwright
 
   p6_env_export_un "P6_DFZ_VSCODE_SANDBOX_NAME"
 
