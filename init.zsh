@@ -68,39 +68,43 @@ p6df::modules::vscode::vscodes() {
 ######################################################################
 p6df::modules::vscode::vscodes::config() {
 
+#    "editor.wordWrap": "all",
+#    "editor.wordWrapColumn": 120,
   cat <<'EOF'
     "[markdown]": {
-      "editor.defaultFormatter": "yzhang.markdown-all-in-one"  # Use Markdown All in One as the formatter
+      "editor.defaultFormatter": "yzhang.markdown-all-in-one"
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "vscode.json-language-features" # Use built-in JSON formatter
+      "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "editor.cursorBlinking": "phase",              # Cursor blinks with a smooth phase animation
-    "editor.cursorStyle": "block",                 # Use a block-style cursor
-    "editor.formatOnPaste": true,                  # Auto-format code when pasting
-    "editor.formatOnSave": true,                   # Auto-format files on save
-    "editor.formatOnType": true,                   # Auto-format while typing
-    "editor.minimap.enabled": false,               # Disable the minimap for a cleaner UI
-    "editor.snippetSuggestions": "top",            # Show snippet suggestions at the top of IntelliSense
-    "editor.suggest.preview": true,                # Preview suggestion results inline
-    "editor.tabCompletion": "on",                  # Enable tab-based completion
-    "editor.wordWrap": "all",                      # Wrap lines in all editors
-    "editor.wordWrapColumn": 120,                  # Preferred wrap column width
-    "editor.renderWhitespace": "boundary",         # Render whitespace only at word boundaries
-    "editor.quickSuggestions": {                   # Control quick suggestions behavior
-      "strings": true                              # Enable suggestions inside string literals
+    "[yaml]": {
+      "editor.defaultFormatter": "redhat.vscode-yaml"
     },
-    "liveServer.settings.CustomBrowser": "chrome", 		# Launch Live Server using Google Chrome
-    "liveServer.settings.donotShowInfoMsg": true,  		# Suppress Live Server info messages
-    "redhat.telemetry.enabled": false,             		# Disable Red Hat extension telemetry
-    "security.workspace.trust.untrustedFiles": "open", 		# Open untrusted files without prompting
-    "telemetry.telemetryLevel": "off",             		# Disable VS Code telemetry entirely
-    "terminal.integrated.copyOnSelection": true,  		# Copy text automatically when selecting in terminal
-    "terminal.integrated.cursorBlinking": true,    		# Enable cursor blinking in integrated terminal
-    "terminal.integrated.scrollback": 100000,      		# Increase terminal scrollback buffer size
-    "terminal.integrated.shellIntegration.history": 10000, 	# Retain shell integration command history
-    "trailing-spaces.trimOnSave": true,            		# Remove trailing whitespace on save
-    "workbench.startupEditor": "none"              		# Disable the startup editor / welcome page
+    "editor.cursorBlinking": "phase",
+    "editor.cursorStyle": "block",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.minimap.enabled": false,
+    "editor.snippetSuggestions": "top",
+    "editor.suggest.preview": true,
+    "editor.tabCompletion": "on",
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "boundary",
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "redhat.telemetry.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.shellIntegration.history": 10000,
+    "trailing-spaces.trimOnSave": true,
+    "workbench.startupEditor": "none"
 EOF
 
   p6_return_void
