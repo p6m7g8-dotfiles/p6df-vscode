@@ -18,7 +18,8 @@
 
 ## Summary
 
-TODO: Add a short summary of this module.
+p6df module for Visual Studio Code: extensions, profiles, sandbox management,
+and MCP server (`vscode-mcp-server` via npm) for AI-driven editor integration.
 
 ## Contributing
 
@@ -40,6 +41,7 @@ TODO: Add a short summary of this module.
 - `ppcde` -> `p6df::modules::vscode::sandbox::select perl;   p6df::modules::vscode::sandbox::runner`
 - `pycde` -> `p6df::modules::vscode::sandbox::select python; p6df::modules::vscode::sandbox::runner`
 - `rucde` -> `p6df::modules::vscode::sandbox::select rust;   p6df::modules::vscode::sandbox::runner`
+- `srcde` -> `p6df::modules::vscode::sandbox::select sre;    p6df::modules::vscode::sandbox::runner`
 
 ### Functions
 
@@ -54,6 +56,7 @@ TODO: Add a short summary of this module.
     - _module
     - dir
 - `p6df::modules::vscode::langs()`
+- `p6df::modules::vscode::mcp()`
 - `p6df::modules::vscode::profile::off()`
 - `p6df::modules::vscode::profile::on(profile)`
   - Args:
