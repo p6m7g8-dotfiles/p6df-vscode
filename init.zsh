@@ -250,3 +250,17 @@ p6df::modules::vscode::profile::off() {
 
   p6_return_void
 }
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::mcp()
+#
+#>
+######################################################################
+p6df::modules::vscode::mcp() {
+
+  p6_js_npm_global_install "vscode-mcp-server"
+
+  p6_return_void
+}
