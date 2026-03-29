@@ -170,8 +170,6 @@ p6df::modules::vscode::aliases::init() {
 ######################################################################
 p6df::modules::vscode::langs() {
 
-  # TODO: gemini, copilot, claudecode
-
   p6df::modules::vscode::sandbox::create cdk      "Kimbie Dark"         vscode shell git github aws eslint js playwright
   p6df::modules::vscode::sandbox::create go       "Tomorrow Night Blue" vscode shell git github go
   p6df::modules::vscode::sandbox::create java     "Monokai Dimmed"      vscode shell git github java
