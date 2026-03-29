@@ -215,16 +215,20 @@ p6df::modules::vscode::prompt::mod() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::profile::on(profile)
+# Function: p6df::modules::vscode::profile::on(profile, code)
 #
 #  Args:
 #	profile -
+#	code - shell code block (export VSCODE_EXTENSIONS_GALLERY_SERVICE_URL=...)
 #
 #  Environment:	 HOME P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR
 #>
 ######################################################################
 p6df::modules::vscode::profile::on() {
   local profile="$1"
+  local code="$2"
+
+  p6_run_code "$code"
 
   p6_env_export "P6_DFZ_VSCODE_SANDBOX_DIR" "$HOME/.vscode-sandboxes"
 
@@ -261,6 +265,9 @@ p6df::modules::vscode::profile::off() {
 p6df::modules::vscode::mcp() {
 
   p6_js_npm_global_install "vscode-mcp-server"
+
+  p6df::modules::anthropic::mcp::server::add "vscode" "npx" "-y" "vscode-mcp-server"
+  p6df::modules::openai::mcp::server::add "vscode" "npx" "-y" "vscode-mcp-server"
 
   p6_return_void
 }
