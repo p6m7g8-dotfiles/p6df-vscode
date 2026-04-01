@@ -10,13 +10,13 @@
 #  Returns:
 #	path - dir
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
+#  Environment:	 P6_DFZ_VSCODE_PROFILE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::sandbox::dir() {
   local sandbox_name="${1:-$P6_DFZ_VSCODE_SANDBOX_NAME}"
 
-  local dir="$P6_DFZ_VSCODE_SANDBOX_DIR/$P6_DFZ_PROFILE_VSCODE/$sandbox_name"
+  local dir="$P6_DFZ_VSCODE_SANDBOX_DIR/$P6_DFZ_VSCODE_PROFILE/$sandbox_name"
 
   p6_return_path "$dir"
 }
