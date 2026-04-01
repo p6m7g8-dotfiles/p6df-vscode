@@ -112,32 +112,14 @@ EOF
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::init(_module, dir)
-#
-#  Args:
-#	_module -
-#	dir -
-#
-#>
-######################################################################
-p6df::modules::vscode::init() {
-  local _module="$1"
-  local dir="$2"
-
-  p6_bootstrap "$dir"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
 # Function: p6df::modules::vscode::aliases::init()
 #
 #>
 ######################################################################
 p6df::modules::vscode::aliases::init() {
 
+  local _module="$1"
+  local _dir="$2"
   p6_alias "p6_code" "p6df::modules::vscode::sandbox::runner"
   p6_alias "cde" "p6_code"
   p6_alias "cdel" "p6df::modules::vscode::extensions::list"
@@ -191,23 +173,24 @@ p6df::modules::vscode::langs() {
 ######################################################################
 #<
 #
-# Function: str str = p6df::modules::vscode::prompt::mod()
+# Function: str str = p6df::modules::vscode::prompt::system()
 #
 #  Returns:
 #	str - str
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_NAME
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
-p6df::modules::vscode::prompt::mod() {
+p6df::modules::vscode::prompt::system() {
 
   local str
   if p6_string_blank_NOT "$P6_DFZ_VSCODE_SANDBOX_NAME"; then
-    str="vscode:\t\t  $P6_DFZ_PROFILE_VSCODE: $P6_DFZ_VSCODE_SANDBOX_NAME"
+    str="$(p6_string_space_pad "vscode:" 16)$P6_DFZ_VSCODE_SANDBOX_NAME"
   fi
 
   p6_return_str "$str"
 }
+
 
 # shellcheck disable=2329
 ######################################################################
@@ -217,9 +200,9 @@ p6df::modules::vscode::prompt::mod() {
 #
 #  Args:
 #	profile -
-#	code - shell code block (export VSCODE_EXTENSIONS_GALLERY_SERVICE_URL=...)
+#	code -
 #
-#  Environment:	 HOME P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR
+#  Environment:	 HOME P6_DFZ_VSCODE_PROFILE P6_DFZ_VSCODE_SANDBOX_DIR
 #>
 ######################################################################
 p6df::modules::vscode::profile::on() {
@@ -228,9 +211,8 @@ p6df::modules::vscode::profile::on() {
 
   p6_run_code "$code"
 
+  p6_env_export "P6_DFZ_VSCODE_PROFILE"     "$profile"
   p6_env_export "P6_DFZ_VSCODE_SANDBOX_DIR" "$HOME/.vscode-sandboxes"
-
-  p6_env_export "P6_DFZ_PROFILE_VSCODE" "$profile"
 
   p6_return_void
 }
@@ -241,12 +223,12 @@ p6df::modules::vscode::profile::on() {
 #
 # Function: p6df::modules::vscode::profile::off()
 #
-#  Environment:	 P6_DFZ_PROFILE_VSCODE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
+#  Environment:	 P6_DFZ_VSCODE_PROFILE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
 p6df::modules::vscode::profile::off() {
 
-  p6_env_export_un P6_DFZ_PROFILE_VSCODE
+  p6_env_export_un P6_DFZ_VSCODE_PROFILE
   p6_env_export_un P6_DFZ_VSCODE_SANDBOX_DIR
   p6_env_export_un P6_DFZ_VSCODE_SANDBOX_NAME
 
