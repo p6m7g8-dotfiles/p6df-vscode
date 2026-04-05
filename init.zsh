@@ -1,11 +1,23 @@
 # shellcheck shell=bash
 ######################################################################
+#<
+#
+# Function: p6df::modules::vscode::deps()
+#
+#>
+######################################################################
 p6df::modules::vscode::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6df-shell
   )
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::aliases::init()
+#
+#>
 ######################################################################
 p6df::modules::vscode::aliases::init() {
 
@@ -34,6 +46,13 @@ p6df::modules::vscode::aliases::init() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::vscode::langs()
+#
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
+#>
+######################################################################
 p6df::modules::vscode::langs() {
 
   p6df::modules::vscode::sandbox::create cdk      "Kimbie Dark"         vscode shell git github aws eslint js playwright
@@ -55,6 +74,12 @@ p6df::modules::vscode::langs() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::vscode::mcp()
+#
+#>
+######################################################################
 p6df::modules::vscode::mcp() {
 
   p6_js_npm_global_install "vscode-mcp-server"
@@ -64,6 +89,12 @@ p6df::modules::vscode::mcp() {
 
   p6_return_void
 }
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::vscodes()
+#
+#>
 ######################################################################
 p6df::modules::vscode::vscodes() {
 
@@ -104,6 +135,12 @@ p6df::modules::vscode::vscodes() {
 
   p6_return_void
 }
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::vscodes::config()
+#
+#>
 ######################################################################
 p6df::modules::vscode::vscodes::config() {
 
@@ -150,6 +187,17 @@ EOF
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::vscode::profile::on(profile, code)
+#
+#  Args:
+#	profile -
+#	code -
+#
+#  Environment:	 HOME P6_DFZ_VSCODE_PROFILE P6_DFZ_VSCODE_SANDBOX_DIR
+#>
+######################################################################
 p6df::modules::vscode::profile::on() {
   local profile="$1"
   local code="$2"
@@ -164,6 +212,13 @@ p6df::modules::vscode::profile::on() {
 
 # shellcheck disable=2329
 ######################################################################
+#<
+#
+# Function: p6df::modules::vscode::profile::off()
+#
+#  Environment:	 P6_DFZ_VSCODE_PROFILE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
+#>
+######################################################################
 p6df::modules::vscode::profile::off() {
 
   p6_env_export_un P6_DFZ_VSCODE_PROFILE
@@ -173,37 +228,6 @@ p6df::modules::vscode::profile::off() {
   p6_return_void
 }
 
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::deps()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::vscodes()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::vscodes::config()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::aliases::init()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::langs()
-#
-#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
-#>
 ######################################################################
 #<
 #
@@ -227,27 +251,3 @@ p6df::modules::vscode::prompt::system() {
 
 
 # shellcheck disable=2329
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::profile::on(profile, code)
-#
-#  Args:
-#	profile -
-#	code -
-#
-#  Environment:	 HOME P6_DFZ_VSCODE_PROFILE P6_DFZ_VSCODE_SANDBOX_DIR
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::profile::off()
-#
-#  Environment:	 P6_DFZ_VSCODE_PROFILE P6_DFZ_VSCODE_SANDBOX_DIR P6_DFZ_VSCODE_SANDBOX_NAME
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::mcp()
-#
-#>
