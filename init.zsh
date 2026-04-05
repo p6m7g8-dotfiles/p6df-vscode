@@ -15,6 +15,83 @@ p6df::modules::vscode::deps() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::vscode::aliases::init()
+#
+#>
+######################################################################
+p6df::modules::vscode::aliases::init() {
+
+  local _module="$1"
+  local _dir="$2"
+  p6_alias "p6_code" "p6df::modules::vscode::sandbox::runner"
+  p6_alias "cde" "p6_code"
+  p6_alias "cdel" "p6df::modules::vscode::extensions::list"
+  p6_alias "cdeL" "p6df::modules::vscode::extension::install"
+
+  p6_alias "acde"  "p6df::modules::vscode::sandbox::select all;    p6df::modules::vscode::sandbox::runner"
+  p6_alias "ccde"  "p6df::modules::vscode::sandbox::select cdk;    p6df::modules::vscode::sandbox::runner"
+  p6_alias "srcde" "p6df::modules::vscode::sandbox::select sre;    p6df::modules::vscode::sandbox::runner"
+  p6_alias "gcde"  "p6df::modules::vscode::sandbox::select go;     p6df::modules::vscode::sandbox::runner"
+  p6_alias "jcde"  "p6df::modules::vscode::sandbox::select java;   p6df::modules::vscode::sandbox::runner"
+  p6_alias "ncde"  "p6df::modules::vscode::sandbox::select nextjs; p6df::modules::vscode::sandbox::runner"
+  p6_alias "ppcde" "p6df::modules::vscode::sandbox::select perl;   p6df::modules::vscode::sandbox::runner"
+  p6_alias "pycde" "p6df::modules::vscode::sandbox::select python; p6df::modules::vscode::sandbox::runner"
+  p6_alias "rcde"  "p6df::modules::vscode::sandbox::select rails;  p6df::modules::vscode::sandbox::runner"
+  p6_alias "rucde" "p6df::modules::vscode::sandbox::select rust;   p6df::modules::vscode::sandbox::runner"
+  p6_alias "scde"  "p6df::modules::vscode::sandbox::select shell;  p6df::modules::vscode::sandbox::runner"
+
+  p6_alias "code" "p6_code"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::langs()
+#
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
+#>
+######################################################################
+p6df::modules::vscode::langs() {
+
+  p6df::modules::vscode::sandbox::create cdk      "Kimbie Dark"         vscode shell git github aws eslint js playwright
+  p6df::modules::vscode::sandbox::create go       "Tomorrow Night Blue" vscode shell git github go
+  p6df::modules::vscode::sandbox::create java     "Monokai Dimmed"      vscode shell git github java
+  p6df::modules::vscode::sandbox::create nextjs   "Abyss"               vscode shell git github eslint js playwright
+  p6df::modules::vscode::sandbox::create perl     "Experimental Dark"   vscode shell git github perl
+  p6df::modules::vscode::sandbox::create python   "Default Light+"      vscode shell git github python
+  p6df::modules::vscode::sandbox::create rails    "Solarized Dark"      vscode shell git github ruby rails
+  p6df::modules::vscode::sandbox::create rust     "Red"                 vscode shell git github rust
+  p6df::modules::vscode::sandbox::create shell    "Default Dark+"       vscode shell git github
+  p6df::modules::vscode::sandbox::create sre      "Solarized Light"     vscode shell git github docker jenkins launchdarkly kubernetes terraform
+
+  p6df::modules::vscode::sandbox::create all      "Visual Studio Light" aws c cucumber docker eslint git github go java js jupyter perl playwright python ruby rust shell snowflake terraform vscode
+
+  p6_env_export_un "P6_DFZ_VSCODE_SANDBOX_NAME"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::vscode::mcp()
+#
+#>
+######################################################################
+p6df::modules::vscode::mcp() {
+
+  p6_js_npm_global_install "vscode-mcp-server"
+
+  p6df::modules::anthropic::mcp::server::add "vscode" "npx" "-y" "vscode-mcp-server"
+  p6df::modules::openai::mcp::server::add "vscode" "npx" "-y" "vscode-mcp-server"
+
+  p6_return_void
+}
+######################################################################
+#<
+#
 # Function: p6df::modules::vscode::vscodes()
 #
 #>
@@ -112,90 +189,6 @@ EOF
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::aliases::init()
-#
-#>
-######################################################################
-p6df::modules::vscode::aliases::init() {
-
-  local _module="$1"
-  local _dir="$2"
-  p6_alias "p6_code" "p6df::modules::vscode::sandbox::runner"
-  p6_alias "cde" "p6_code"
-  p6_alias "cdel" "p6df::modules::vscode::extensions::list"
-  p6_alias "cdeL" "p6df::modules::vscode::extension::install"
-
-  p6_alias "acde"  "p6df::modules::vscode::sandbox::select all;    p6df::modules::vscode::sandbox::runner"
-  p6_alias "ccde"  "p6df::modules::vscode::sandbox::select cdk;    p6df::modules::vscode::sandbox::runner"
-  p6_alias "srcde" "p6df::modules::vscode::sandbox::select sre;    p6df::modules::vscode::sandbox::runner"
-  p6_alias "gcde"  "p6df::modules::vscode::sandbox::select go;     p6df::modules::vscode::sandbox::runner"
-  p6_alias "jcde"  "p6df::modules::vscode::sandbox::select java;   p6df::modules::vscode::sandbox::runner"
-  p6_alias "ncde"  "p6df::modules::vscode::sandbox::select nextjs; p6df::modules::vscode::sandbox::runner"
-  p6_alias "ppcde" "p6df::modules::vscode::sandbox::select perl;   p6df::modules::vscode::sandbox::runner"
-  p6_alias "pycde" "p6df::modules::vscode::sandbox::select python; p6df::modules::vscode::sandbox::runner"
-  p6_alias "rcde"  "p6df::modules::vscode::sandbox::select rails;  p6df::modules::vscode::sandbox::runner"
-  p6_alias "rucde" "p6df::modules::vscode::sandbox::select rust;   p6df::modules::vscode::sandbox::runner"
-  p6_alias "scde"  "p6df::modules::vscode::sandbox::select shell;  p6df::modules::vscode::sandbox::runner"
-
-  p6_alias "code" "p6_code"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::vscode::langs()
-#
-#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
-#>
-######################################################################
-p6df::modules::vscode::langs() {
-
-  p6df::modules::vscode::sandbox::create cdk      "Kimbie Dark"         vscode shell git github aws eslint js playwright
-  p6df::modules::vscode::sandbox::create go       "Tomorrow Night Blue" vscode shell git github go
-  p6df::modules::vscode::sandbox::create java     "Monokai Dimmed"      vscode shell git github java
-  p6df::modules::vscode::sandbox::create nextjs   "Abyss"               vscode shell git github eslint js playwright
-  p6df::modules::vscode::sandbox::create perl     "Experimental Dark"   vscode shell git github perl
-  p6df::modules::vscode::sandbox::create python   "Default Light+"      vscode shell git github python
-  p6df::modules::vscode::sandbox::create rails    "Solarized Dark"      vscode shell git github ruby rails
-  p6df::modules::vscode::sandbox::create rust     "Red"                 vscode shell git github rust
-  p6df::modules::vscode::sandbox::create shell    "Default Dark+"       vscode shell git github
-  p6df::modules::vscode::sandbox::create sre      "Solarized Light"     vscode shell git github docker jenkins launchdarkly kubernetes terraform
-
-  p6df::modules::vscode::sandbox::create all      "Visual Studio Light" aws c cucumber docker eslint git github go java js jupyter perl playwright python ruby rust shell snowflake terraform vscode
-
-  p6_env_export_un "P6_DFZ_VSCODE_SANDBOX_NAME"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: str str = p6df::modules::vscode::prompt::system()
-#
-#  Returns:
-#	str - str
-#
-#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
-#>
-######################################################################
-p6df::modules::vscode::prompt::system() {
-
-  local str
-  if p6_string_blank_NOT "$P6_DFZ_VSCODE_SANDBOX_NAME"; then
-    str="$(p6_string_space_pad "vscode:" 16)$P6_DFZ_VSCODE_SANDBOX_NAME"
-  fi
-
-  p6_return_str "$str"
-}
-
-
-# shellcheck disable=2329
-######################################################################
-#<
-#
 # Function: p6df::modules::vscode::profile::on(profile, code)
 #
 #  Args:
@@ -238,16 +231,23 @@ p6df::modules::vscode::profile::off() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::mcp()
+# Function: str str = p6df::modules::vscode::prompt::system()
 #
+#  Returns:
+#	str - str
+#
+#  Environment:	 P6_DFZ_VSCODE_SANDBOX_NAME
 #>
 ######################################################################
-p6df::modules::vscode::mcp() {
+p6df::modules::vscode::prompt::system() {
 
-  p6_js_npm_global_install "vscode-mcp-server"
+  local str
+  if p6_string_blank_NOT "$P6_DFZ_VSCODE_SANDBOX_NAME"; then
+    str="$(p6_string_space_pad "vscode:" 16)$P6_DFZ_VSCODE_SANDBOX_NAME"
+  fi
 
-  p6df::modules::anthropic::mcp::server::add "vscode" "npx" "-y" "vscode-mcp-server"
-  p6df::modules::openai::mcp::server::add "vscode" "npx" "-y" "vscode-mcp-server"
-
-  p6_return_void
+  p6_return_str "$str"
 }
+
+
+# shellcheck disable=2329
