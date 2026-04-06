@@ -18,8 +18,7 @@
 
 ## Summary
 
-p6df module for Visual Studio Code: extensions, profiles, sandbox management,
-and MCP server (`vscode-mcp-server` via npm) for AI-driven editor integration.
+TODO: Add a short summary of this module.
 
 ## Contributing
 
@@ -49,21 +48,21 @@ and MCP server (`vscode-mcp-server` via npm) for AI-driven editor integration.
 
 ##### p6df-vscode/init.zsh
 
-- `p6df::modules::vscode::aliases::init()`
-- `p6df::modules::vscode::deps()`
-- `p6df::modules::vscode::init(_module, dir)`
+- `p6df::modules::vscode::aliases::init(_module, _dir)`
   - Args:
     - _module
-    - dir
+    - _dir
+- `p6df::modules::vscode::deps()`
 - `p6df::modules::vscode::langs()`
 - `p6df::modules::vscode::mcp()`
 - `p6df::modules::vscode::profile::off()`
-- `p6df::modules::vscode::profile::on(profile)`
+- `p6df::modules::vscode::profile::on(profile, code)`
   - Args:
     - profile
+    - code
 - `p6df::modules::vscode::vscodes()`
 - `p6df::modules::vscode::vscodes::config()`
-- `str str = p6df::modules::vscode::prompt::mod()`
+- `str str = p6df::modules::vscode::prompt::system()`
 
 #### p6df-vscode/lib
 

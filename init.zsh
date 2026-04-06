@@ -15,7 +15,11 @@ p6df::modules::vscode::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::vscode::aliases::init()
+# Function: p6df::modules::vscode::aliases::init(_module, _dir)
+#
+#  Args:
+#	_module -
+#	_dir -
 #
 #>
 ######################################################################
